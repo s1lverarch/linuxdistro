@@ -46,7 +46,20 @@ nav{
 .nav-links a:hover{color:var(--shi)}
 .nav-btn{background:transparent;border:1px solid var(--blue2);color:var(--blue);padding:6px 16px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:.75rem;transition:all .2s}
 .nav-btn:hover{background:rgba(91,163,201,0.08);border-color:var(--blue);color:var(--shi)}
+/* Add this right after .nav-btn:hover ... */
 
+.nav-logo img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(1.2);
+  /* Add the rotation animation here */
+  animation: slow-spin 20s linear infinite;
+}
+
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 /* HERO */
 .hero{
   min-height:100vh;display:flex;flex-direction:column;
@@ -317,6 +330,9 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <li><a href="#smdr">󱁤   - Tools</a></li>
     <li><a href="#community">  - Community</a></li>
   </ul>
+
+
+
   <a class="nav-btn" href="https://silverarchlinux.miraheze.org/wiki/" target="_blank">Wiki Page</a>
 </nav>
 
@@ -334,8 +350,8 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="hero-tag">Arch-Based · For Everyone · International</div>
   <h1>Built for<br><em>Absolute Performance</em></h1>
   <p class="hero-desc">The first Tunisian Arch-based Linux distribution. Minimal, fast, and community-driven across 50 distro environments.</p>
-  
-  
+
+
   <div class="terminal">
     <div class="t-bar">
       <span class="tb tb-r"></span><span class="tb tb-y"></span><span class="tb tb-g"></span>
@@ -374,7 +390,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
     <div class="fc"><span class="fi"></span><div class="ft">System Geography Origines</div><div class="fd">Did you know Silverarch Linux Is The First Arabic Indie Arch-based Distribution</div></div>
     <div class="fc"><span class="fi"></span><div class="ft">Active Community</div><div class="fd">SilverArch Linux Has A Community And Wiki Wich Means It Will Be Easy To Install</div></div>
     <div class="fc"><span class="fi">󰮮</span><div class="ft">Open Source</div><div class="fd">Fully open. Contribute packages, docs, translations. Built for everyone, to everything.</div></div>
-    <div class="fc"><span class="fi">󱓞</span><div class="ft">The Linux Freedom</div><div class="fd">Silverarch Pkg Are Not Pre-Installed Only silverarch-installer and silverarch-keyrings You are The Owner Of The System, So You Choice If You Want Install Or Not  .</div></div>  
+    <div class="fc"><span class="fi">󱓞</span><div class="ft">The Linux Freedom</div><div class="fd">Silverarch Pkg Are Not Pre-Installed Only silverarch-installer and silverarch-keyrings You are The Owner Of The System, So You Choice If You Want Install Or Not  .</div></div>
   </div>
   <!-- DOWNLOAD -->
   <div class="r" style="margin-top:64px">
