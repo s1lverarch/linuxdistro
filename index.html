@@ -5,23 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SilverArch Linux</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* ── DARK THEME (default) ── */
 :root{
-  --bg:    #020204;
-  --bg1:   #05050A;
-  --bg2:   #080810;
-  --bg3:   #0C0C16;
-  --silver:#A8A8C0;
-  --shi:   #D8D8F0;
-  --blue:  #5BA3C9;
-  --blue2: #3A7A9E;
-  --cyan:  #4EC9B0;
+  --bg:    #010308;
+  --bg1:   #040812;
+  --bg2:   #070D1A;
+  --bg3:   #0B1220;
+  --silver:#B0C4DE;
+  --shi:   #E0EEFF;
+  --blue:  #4DA6FF;
+  --blue2: #2980CC;
+  --blue3: #1A5FA0;
+  --cyan:  #38D9C0;
   --green: #3FB950;
-  --dim:   #505068;
-  --dim2:  #383850;
-  --border:rgba(168,168,192,0.07);
-  --border2:rgba(91,163,201,0.15);
+  --dim:   #4A6080;
+  --dim2:  #2E3D55;
+  --border:rgba(77,166,255,0.08);
+  --border2:rgba(77,166,255,0.18);
+  --card-bg:rgba(4,8,18,0.95);
+  --hero-text-shadow:0 0 40px rgba(77,166,255,0.3);
+  color-scheme:dark;
+}
+/* ── LIGHT THEME ── */
+[data-theme="light"]{
+  --bg:    #F0F4FA;
+  --bg1:   #E6EDF7;
+  --bg2:   #DDE6F3;
+  --bg3:   #D3DDED;
+  --silver:#2C4A6E;
+  --shi:   #0D1F38;
+  --blue:  #004BC4;
+  --blue2: #1559A0;
+  --blue3: #0F4480;
+  --cyan:  #0E8C76;
+  --green: #1A7A30;
+  --dim:   #5A7A9A;
+  --dim2:  #8AAAC8;
+  --border:rgba(26,111,196,0.12);
+  --border2:rgba(26,111,196,0.22);
+  --card-bg:rgba(240,244,250,0.97);
+  --hero-text-shadow:0 0 40px rgba(26,111,196,0.15);
+  color-scheme:light;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--silver);font-family:'Space Grotesk',sans-serif;line-height:1.6;overflow-x:hidden}
@@ -30,35 +57,119 @@ a{color:inherit;text-decoration:none}
 ::-webkit-scrollbar-track{background:var(--bg1)}
 ::-webkit-scrollbar-thumb{background:var(--dim2);border-radius:2px}
 
+/* ── THEME TRANSITION ── */
+html{transition:background .3s ease,color .3s ease}
+body{transition:background .3s ease,color .3s ease}
+
+/* ── THEME TOGGLE BUTTON ── */
+.theme-btn{
+  display:flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:8px;
+  background:transparent;border:1px solid var(--border2);
+  color:var(--dim);cursor:pointer;
+  transition:all .2s;flex-shrink:0;
+}
+.theme-btn svg{width:16px;height:16px;stroke-width:2}
+.theme-btn:hover{background:rgba(77,166,255,0.08);border-color:var(--blue);color:var(--blue)}
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--silver);font-family:'Space Grotesk',sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg1)}
+::-webkit-scrollbar-thumb{background:var(--dim2);border-radius:2px}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* animated gradient text */
+.grad-text{
+  background:linear-gradient(100deg,var(--shi) 0%,var(--blue) 35%,var(--cyan) 55%,var(--shi) 80%);
+  background-size:220% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:grad-move 7s ease-in-out infinite;
+}
+@keyframes grad-move{0%,100%{background-position:0% center}50%{background-position:100% center}}
+
+/* cursor spotlight on hero */
+.hero{--mx:50%;--my:40%}
+.hero-spot{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(420px circle at var(--mx) var(--my),rgba(91,163,201,0.10),transparent 70%);
+  transition:background .1s linear;
+}
+
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;
-  padding:14px 48px;
+  padding:16px 48px;
   background:rgba(2,2,4,0.94);
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
+  transition:padding .25s ease,background .25s ease,box-shadow .25s ease;
 }
+nav.scrolled{padding:10px 48px;box-shadow:0 8px 32px rgba(0,0,0,0.35)}
+
 .nav-logo{display:flex;align-items:center;gap:10px;font-size:.95rem;font-weight:600;color:var(--shi);letter-spacing:.03em}
-.nav-logo img{width:28px;height:28px;filter:brightness(1.2)}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--dim);font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:var(--shi)}
-.nav-btn{background:transparent;border:1px solid var(--blue2);color:var(--blue);padding:6px 16px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:.75rem;transition:all .2s}
-.nav-btn:hover{background:rgba(91,163,201,0.08);border-color:var(--blue);color:var(--shi)}
-/* Add this right after .nav-btn:hover ... */
+.nav-logo img{width:28px;height:28px;filter:brightness(1.2);animation:slow-spin 20s linear infinite;transition:width .25s,height .25s}
+@keyframes slow-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-.nav-logo img {
-  width: 28px;
-  height: 28px;
-  filter: brightness(1.2);
-  /* Add the rotation animation here */
-  animation: slow-spin 20s linear infinite;
+.nav-links{display:flex;gap:6px;list-style:none;align-items:center}
+.nav-links li{position:relative}
+.nav-links a{
+  display:flex;align-items:center;gap:7px;
+  color:var(--dim);font-size:.76rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  padding:8px 13px;border-radius:5px;
+  transition:color .2s,background .2s;
 }
+.nav-links a svg{width:14px;height:14px;stroke-width:2;flex-shrink:0;opacity:.85}
+.nav-links a:hover{color:var(--shi);background:rgba(91,163,201,0.06)}
+.nav-links a.active{color:var(--blue)}
+.nav-links a.active svg{opacity:1}
+.nav-links li::after{
+  content:'';position:absolute;left:13px;right:13px;bottom:2px;height:2px;
+  background:var(--blue);border-radius:2px;
+  transform:scaleX(0);transform-origin:left;transition:transform .25s ease;
+}
+.nav-links li:has(a.active)::after{transform:scaleX(1)}
 
-@keyframes slow-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.nav-btn{
+  display:flex;align-items:center;gap:7px;
+  background:transparent;border:1px solid var(--blue2);color:var(--blue);
+  padding:8px 18px;border-radius:4px;
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;
+  transition:all .2s;
+}
+.nav-btn svg{width:14px;height:14px;stroke-width:2}
+.nav-btn:hover{background:rgba(91,163,201,0.08);border-color:var(--blue);color:var(--shi);transform:translateY(-1px)}
+
+.nav-burger{
+  display:none;background:transparent;border:1px solid var(--border2);color:var(--silver);
+  width:38px;height:38px;border-radius:5px;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;
+}
+.nav-burger svg{width:18px;height:18px}
+.nav-burger:hover{border-color:var(--blue2);color:var(--shi)}
+
+@media(max-width:860px){
+  nav{padding:12px 18px}
+  nav.scrolled{padding:9px 18px}
+  .nav-links{
+    position:fixed;top:60px;left:12px;right:12px;
+    flex-direction:column;align-items:stretch;gap:2px;
+    background:rgba(5,5,10,0.98);backdrop-filter:blur(24px);
+    border:1px solid var(--border2);border-radius:10px;
+    padding:10px;box-shadow:0 24px 60px rgba(0,0,0,0.5);
+    max-height:0;overflow:hidden;opacity:0;
+    transition:max-height .3s ease,opacity .25s ease,padding .3s ease;
+  }
+  .nav-links.open{max-height:400px;opacity:1;padding:10px}
+  .nav-links a{padding:12px 14px;font-size:.8rem}
+  .nav-links li::after{display:none}
+  .nav-burger{display:flex}
+  .nav-btn span{display:inline}
 }
 /* HERO */
 .hero{
@@ -135,10 +246,12 @@ h1 em{font-style:normal;color:var(--blue)}
 @keyframes bl{0%,100%{opacity:1}50%{opacity:0}}
 
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fu .7s .7s forwards}
-.btn-p{background:var(--blue);color:#000;padding:12px 28px;border-radius:4px;font-weight:700;font-size:.88rem;transition:all .2s}
+.btn-p{display:flex;align-items:center;gap:8px;background:var(--blue);color:#000;padding:12px 28px;border-radius:4px;font-weight:700;font-size:.88rem;transition:all .2s}
+.btn-p svg{width:15px;height:15px;stroke-width:2.4}
 .btn-p:hover{background:var(--shi);transform:translateY(-2px);box-shadow:0 8px 28px rgba(91,163,201,0.25)}
-.btn-g{background:transparent;color:var(--silver);border:1px solid var(--border2);padding:12px 28px;border-radius:4px;font-size:.88rem;transition:all .2s}
-.btn-g:hover{border-color:rgba(168,168,192,0.3);color:var(--shi)}
+.btn-g{display:flex;align-items:center;gap:8px;background:transparent;color:var(--silver);border:1px solid var(--border2);padding:12px 28px;border-radius:4px;font-size:.88rem;transition:all .2s}
+.btn-g svg{width:15px;height:15px;stroke-width:2}
+.btn-g:hover{border-color:rgba(168,168,192,0.3);color:var(--shi);transform:translateY(-2px)}
 
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
@@ -151,15 +264,37 @@ h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--shi);letter-sp
 
 /* FEATURES */
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;margin-top:44px;background:var(--border);border:1px solid var(--border);border-radius:7px;overflow:hidden}
-.fc{background:var(--bg1);padding:26px;transition:background .2s}
-.fc:hover{background:var(--bg3)}
-.fi{font-size:1.3rem;margin-bottom:12px;display:block}
-.ft{font-size:.9rem;font-weight:600;color:var(--shi);margin-bottom:6px}
-.fd{font-size:.82rem;color:var(--dim);line-height:1.6}
+.fc{
+  background:var(--bg1);padding:26px;position:relative;overflow:hidden;
+  transition:background .25s,transform .25s;
+}
+.fc::before{
+  content:'';position:absolute;inset:0;opacity:0;pointer-events:none;
+  background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(91,163,201,0.10),transparent 70%);
+  transition:opacity .25s;
+}
+.fc:hover{background:var(--bg3);transform:translateY(-3px)}
+.fc:hover::before{opacity:1}
+.fi{font-size:1.3rem;margin-bottom:12px;display:block;position:relative}
+.fi svg{width:22px;height:22px;stroke-width:1.8;color:var(--blue)}
+.ft{font-size:.9rem;font-weight:600;color:var(--shi);margin-bottom:6px;position:relative}
+.fd{font-size:.82rem;color:var(--dim);line-height:1.6;position:relative}
 
-/* SMDR */
-.smdr-bg{background:var(--bg1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.smdr-inner{max-width:1040px;margin:0 auto;padding:80px 24px}
+/* native scroll-driven entry animation, progressive enhancement only */
+@media (prefers-reduced-motion:no-preference){
+  @supports ((animation-timeline:view()) and (animation-range:entry)){
+    @keyframes card-rise{from{opacity:0;transform:translateY(28px) scale(.97)}}
+    .fc,.ccard,.gcard,.metric-box{
+      animation:card-rise auto linear both;
+      animation-timeline:view();
+      animation-range:entry 0% cover 30%;
+    }
+  }
+}
+
+/* SLITE */
+.slite-bg{background:var(--bg1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.slite-inner{max-width:1040px;margin:0 auto;padding:80px 24px}
 
 .ascii-pre{
   font-family:'JetBrains Mono',monospace;font-size:.7rem;
@@ -171,8 +306,8 @@ h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--shi);letter-sp
 .dg-wrap{background:#000003;border:1px solid var(--border2);border-radius:7px;overflow:hidden;margin:36px 0 28px}
 .dg-bar{background:#07070F;border-bottom:1px solid var(--border);padding:9px 18px;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--dim);display:flex;justify-content:space-between}
 .dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));padding:6px}
-.di{padding:7px 10px;display:flex;align-items:center;gap:7px;border-radius:3px;transition:background .15s}
-.di:hover{background:rgba(91,163,201,0.07)}
+.di{padding:7px 10px;display:flex;align-items:center;gap:7px;border-radius:3px;transition:background .15s,transform .15s}
+.di:hover{background:rgba(91,163,201,0.07);transform:translateX(3px)}
 .dn{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--dim2);min-width:18px}
 .da{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--blue);font-weight:600}
 .dm{font-size:.72rem;color:var(--silver)}
@@ -246,6 +381,7 @@ h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--shi);letter-sp
 .ccard{background:var(--bg1);border:1px solid var(--border);border-radius:6px;padding:22px 20px;transition:all .2s;display:block}
 .ccard:hover{border-color:var(--blue2);background:var(--bg3);transform:translateY(-2px)}
 .ci{font-size:1.4rem;margin-bottom:10px;display:block}
+.ci svg{width:20px;height:20px;stroke-width:1.8;color:var(--blue)}
 .ct{font-weight:600;color:var(--shi);margin-bottom:4px;font-size:.9rem}
 .cd{color:var(--dim);font-size:.8rem;line-height:1.6}
 
@@ -294,7 +430,8 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 .fl{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:.82rem}
 .fl img{width:20px;height:20px;opacity:.5;filter:brightness(1.1)}
 .flinks{display:flex;gap:16px}
-.flinks a{color:var(--dim);font-size:.78rem;transition:color .2s}
+.flinks a{display:flex;align-items:center;gap:6px;color:var(--dim);font-size:.78rem;transition:color .2s}
+.flinks a svg{width:13px;height:13px;stroke-width:2}
 .flinks a:hover{color:var(--silver)}
 .fn{color:var(--dim2);font-size:.74rem;font-family:'JetBrains Mono',monospace}
 
@@ -305,7 +442,6 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 .r2.v{opacity:1;transform:translateY(0)}
 
 @media(max-width:700px){
-  nav{padding:12px 16px}.nav-links{display:none}
   .usage{grid-template-columns:1fr}
   .about-split{grid-template-columns:1fr;gap:28px}
   .gallery{grid-template-columns:1fr}
@@ -317,23 +453,33 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 </head>
 <body>
 
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
 <!-- NAV -->
-<nav>
+<nav id="site-nav">
   <a class="nav-logo" href="#">
-    <img src="Un-removebg-preview.png" alt="" onerror="this.style.display='none'">
+    <img src="silverarch.png" alt="" onerror="this.style.display='none'">
     SilverArch Linux
   </a>
-  <ul class="nav-links">
-    <li><a href="#">   - Home</a></li>
-    <li><a href="#features">󰩉   - Features</a></li>
-    <li><a href="#about"> -  About</a></li>
-    <li><a href="#smdr">󱁤   - Tools</a></li>
-    <li><a href="#community">  - Community</a></li>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#" data-nav><i data-lucide="home"></i>Home</a></li>
+    <li><a href="#features" data-nav><i data-lucide="layout-grid"></i>Features</a></li>
+    <li><a href="#about" data-nav><i data-lucide="info"></i>About</a></li>
+    <li><a href="#slite" data-nav><i data-lucide="terminal"></i>Slite</a></li>
+    <li><a href="#community" data-nav><i data-lucide="users"></i>Community</a></li>
   </ul>
 
+  <div style="display:flex;align-items:center;gap:8px">
+    <a class="nav-btn" href="https://silverarchlinux.miraheze.org/wiki/" target="_blank">
+      <i data-lucide="book-open"></i><span>Wiki Page</span>
+    </a>
 
-
-  <a class="nav-btn" href="https://silverarchlinux.miraheze.org/wiki/" target="_blank">Wiki Page</a>
+    <!-- Theme toggle -->
+    <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">
+      <i data-lucide="sun" id="theme-icon"></i>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -342,20 +488,21 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
+  <div class="hero-spot" id="hero-spot"></div>
   <div class="logo-wrap">
     <div class="logo-ring2"></div>
     <div class="logo-ring"></div>
-    <img class="hero-logo" src="Un-removebg-preview.png" alt="SilverArch" onerror="this.style.opacity='0'">
+    <img class="hero-logo" src="silverarch.png" alt="SilverArch" onerror="this.style.opacity='0'">
   </div>
   <div class="hero-tag">Arch-Based · For Everyone · International</div>
-  <h1>Built for<br><em>Absolute Performance</em></h1>
+  <h1>Built for<br><em class="grad-text">Absolute Performance</em></h1>
   <p class="hero-desc">The first Tunisian Arch-based Linux distribution. Minimal, fast, and community-driven across 50 distro environments.</p>
 
 
   <div class="terminal">
     <div class="t-bar">
       <span class="tb tb-r"></span><span class="tb tb-y"></span><span class="tb tb-g"></span>
-      <span class="t-title"> SilverArch Boot · QEMU/KVM</span>
+      <span class="t-title"><i data-lucide="terminal" style="width:12px;height:12px;vertical-align:-2px;margin-right:5px"></i>SilverArch Boot · QEMU/KVM</span>
     </div>
     <div class="t-body">
       <div class="tl ld" id="t1">silverarch/boot/x86_64/vmlinuz-linux...</div>
@@ -367,9 +514,9 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   </div>
 
   <div class="hero-btns">
-    <a class="btn-p" href="https://silverarchlinux.miraheze.org/wiki/" target="_blank"> - Wiki</a>
-    <a class="btn-g" href="https://discord.gg/eBgVHSPru9" target="_blank">󰙯 - Discord</a>
-    <a class="btn-g" href="https://github.com/iyed-one-st/silverarch-repo" target="_blank"> - GitHub</a>
+    <a class="btn-p" href="https://silverarchlinux.miraheze.org/wiki/" target="_blank"><i data-lucide="book-open"></i>Wiki</a>
+    <a class="btn-g" href="https://discord.gg/eBgVHSPru9" target="_blank"><i data-lucide="message-circle"></i>Discord</a>
+    <a class="btn-g" href="https://github.com/s1lverarch/silverarch-repo" target="_blank"><i data-lucide="cat"></i>GitHub</a>
   </div>
 </div>
 
@@ -380,17 +527,17 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="r">
     <div class="lbl">// core properties</div>
     <h2>Raw Power. Zero Bloat.</h2>
-    <p class="sub">Arch foundation, rolling release, full AUR access — pre-configured and ready to run.</p>
+    <p class="sub">ArchBased, rolling release, full AUR access — pre-configured and ready to run.</p>
   </div>
   <div class="feat-grid r2">
-    <div class="fc"><span class="fi">󰢶</span><div class="ft">Absolute Performance</div><div class="fd">Lean Arch core. No hidden overhead. Your hardware, your rules.</div></div>
-    <div class="fc"><span class="fi"></span><div class="ft">Full Arch-Based</div><div class="fd">pacman, AUR, rolling-release always. Discalmar: SilverArch is not affiliated with or endorsed by the Arch Linux project. </div></div>
-    <div class="fc"><span class="fi">󱧘</span><div class="ft">smdr · 50 Distros</div><div class="fd">One CLI across 50 Linux environments. Any package manager, any system.</div></div>
-    <div class="fc"><span class="fi"></span><div class="ft">International Support</div><div class="fd">English, Arabic, Russian. First Arabic-Tunisian Arch distro with global reach. For More Infos Join Discord Server</div></div>
-    <div class="fc"><span class="fi"></span><div class="ft">System Geography Origines</div><div class="fd">Did you know Silverarch Linux Is The First Arabic Indie Arch-based Distribution</div></div>
-    <div class="fc"><span class="fi"></span><div class="ft">Active Community</div><div class="fd">SilverArch Linux Has A Community And Wiki Wich Means It Will Be Easy To Install</div></div>
-    <div class="fc"><span class="fi">󰮮</span><div class="ft">Open Source</div><div class="fd">Fully open. Contribute packages, docs, translations. Built for everyone, to everything.</div></div>
-    <div class="fc"><span class="fi">󱓞</span><div class="ft">The Linux Freedom</div><div class="fd">Silverarch Pkg Are Not Pre-Installed Only silverarch-installer and silverarch-keyrings You are The Owner Of The System, So You Choice If You Want Install Or Not  .</div></div>
+    <div class="fc"><span class="fi"><i data-lucide="zap"></i></span><div class="ft">Absolute Performance</div><div class="fd">Lean Arch core. No hidden overhead. Your hardware, your rules.</div></div>
+    <div class="fc"><span class="fi"><i data-lucide="package"></i></span><div class="ft">Full Arch-Based</div><div class="fd">pacman, AUR, rolling-release always. Disclaimer: SilverArch is not affiliated with or endorsed by the Arch Linux project. </div></div>
+    <div class="fc"><span class="fi"><i data-lucide="layers"></i></span><div class="ft">Slite · 50 Distros</div><div class="fd">One CLI across 50 Linux environments. Any package manager, any system.</div></div>
+    <div class="fc"><span class="fi"><i data-lucide="globe"></i></span><div class="ft">International Support</div><div class="fd">English, Arabic, Russian. First Arabic-Tunisian Arch distro with global reach. For More Infos Join Discord Server</div></div>
+    <div class="fc"><span class="fi"><i data-lucide="map-pin"></i></span><div class="ft">System Geography Origines</div><div class="fd">Did you know Silverarch Linux Is The First Arabic Indie Arch-based Distribution</div></div>
+    <div class="fc"><span class="fi"><i data-lucide="users"></i></span><div class="ft">Active Community</div><div class="fd">SilverArch Linux Has A Community And Wiki Wich Means It Will Be Easy To Install</div></div>
+    <div class="fc"><span class="fi"><i data-lucide="code-2"></i></span><div class="ft">Open Source</div><div class="fd">Fully open. Contribute packages, docs, translations. Built for everyone, to everything.</div></div>
+    <div class="fc"><span class="fi"><i data-lucide="unlock"></i></span><div class="ft">The Linux Freedom</div><div class="fd">Silverarch Pkg Are Not Pre-Installed Only silverarch-installer and silverarch-keyrings You are The Owner Of The System, So You Choice If You Want Install Or Not  .</div></div>
   </div>
   <!-- DOWNLOAD -->
   <div class="r" style="margin-top:64px">
@@ -412,7 +559,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       </div>
       <div class="dl-body">
         <a class="dl-btn"
-          href="https://github.com/iyed-one-st/silverarch-repo/releases/download/SilverarchLinux(v2026.06.22)/SilverArch_Linux_Full_ISO-2026.06.10-x86_64.iso"
+          href="https://github.com/s1lverarch/silverarch-repo/releases/download/SilverarchLinux(v2026.06.22)/SilverArch_Linux_Full_ISO-2026.06.10-x86_64.iso"
           target="_blank">↓ DOWNLOAD RELEASE</a>
         <div class="dl-hash"><strong>SHA256</strong>e03e748a145c65a43b21eaddf07be2e9520dc2ad89cbfa6243f203b756526bb7</div>
       </div>
@@ -454,7 +601,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
           </div>
           <pre><span class="str">[silverarch-repo]</span>
 <span class="cmd">SigLevel</span> = Optional TrustAll
-<span class="cmd">Server</span>   = https://raw.githubusercontent.com/iyed-one-st/silverarch-repo/main/x86_64/</pre>
+<span class="cmd">Server</span>   = https://raw.githubusercontent.com/s1lverarch/silverarch-repo/main/x86_64/</pre>
         </div>
          Once You Complete In Nano Editor Press Ctrl+O To Save
          And Ctrl+X To Exit
@@ -502,7 +649,7 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="about-split">
     <div class="r">
       <div class="about-screen">
-        <img src="bashscriptwallpaperdark.jpg" alt="SilverArch Linux running">
+        <img src="Ub.jpg" alt="SilverArch Linux">
       </div>
     </div>
     <div class="r2 about-text">
@@ -511,9 +658,9 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
       <p>SilverArch Linux started as a personal project by Silvercore — a Linux distribution engineer from Tunisia who wanted an Arch-based system tuned for real-world performance, not theoretical benchmarks.</p>
       <p>What began as a local effort grew into the first Arabic Tunisian Arch-based distribution with a truly international audience — supported by a multilingual community spanning Arabic, English, and Russian speakers.</p>
       <div class="pills">
-        <span class="pill">pacman</span>
+        <span class="pill">Pacman</span>
         <span class="pill">AUR</span>
-        <span class="pill">Rolling release</span>
+        <span class="pill">Rolling Release</span>
         <span class="pill">x86_64</span>
         <span class="pill">GPL-v3</span>
       </div>
@@ -524,71 +671,71 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   <div class="r" style="margin-top:64px">
     <div class="lbl">// wallpapers</div>
     <h2>The SilverArch Aesthetic</h2>
-    <p class="sub">Official wallpapers shipped with SilverArch Linux.</p>
+    <p class="sub">Just A Wallpapers.</p>
   </div>
   <div class="gallery r2">
     <div class="gcard">
-      <img src="darkcrystals.jpg" alt="Dark Crystals wallpaper">
-      <span class="gcard-label">darkcrystals.jpg</span>
+      <img src="aurora.jpg" alt="Aurora">
+      <span class="gcard-label">aurora.jpg</span>
     </div>
     <div class="gcard">
-      <img src="darkgalaxy.jpg" alt="Dark Galaxy wallpaper">
-      <span class="gcard-label">darkgalaxy.jpg</span>
+      <img src="cyber.png" alt="SilverArch">
+      <span class="gcard-label">cyber.png</span>
     </div>
     <div class="gcard">
-      <img src="yanestashlivdark.jpg" alt="Ya Ne StaShliv Dark wallpaper">
-      <span class="gcard-label">Ub.jpg</span>
+      <img src="sunset.jpg" alt="Sunset">
+      <span class="gcard-label">sunset.jpg</span>
     </div>
   </div>
 </div>
 
 <hr class="sep">
 
-<!-- SMDR -->
-<div class="smdr-bg" id="smdr">
-<div class="smdr-inner">
+<!-- SLITE -->
+<div class="slite-bg" id="slite">
+<div class="slite-inner">
   <div class="r" style="text-align:center;margin-bottom:4px">
-    <div class="lbl" style="margin-bottom:16px">// container management engine</div>
-    <pre class="ascii-pre"> ____  __  __ ____  ____
-/ ___||  \/  |  _ \|  _ \
-\___ \| |\/| | | | | |_) |
- ___) | |  | | |_| |  _ &lt;
-|____/|_|  |_|____/|_| \_\</pre>
-    <h2>Silverarch Multi Distro Repositories</h2>
-    <p class="sub" style="margin:0 auto;text-align:center">A modular container management engine — deploy and manage <strong style="color:var(--shi)">50 Linux distribution environments</strong> from a single unified CLI.</p>
+    <div class="lbl" style="margin-bottom:16px">// rootless container engine</div>
+    <pre class="ascii-pre"> ____  _ _ _
+/ ___|| (_) |_ ___
+\___ \| | | __/ _ \
+ ___) | | | ||  __/
+|____/|_|_|\__\___|</pre>
+    <h2>Slite — Independent Container Engine</h2>
+    <p class="sub" style="margin:0 auto;text-align:center">A proot-based rootless container engine — deploy and manage <strong style="color:var(--shi)">50 Linux distribution environments</strong> from a single unified CLI. No distrobox, no podman, no daemon.</p>
   </div>
 
   <div class="dg-wrap r">
     <div class="dg-bar"><span>supported distributions</span><span style="color:var(--red)">50 environments</span></div>
     <div class="dg" id="dg"></div>
     <div class="dg-note">
-      <strong>sys install</strong> → limited to 6 core distros: <strong> saur ·  salp ·  sfur · 󰕈 subu ·  sdur ·  ssol</strong>
+      <strong>quick install</strong> → 6 core distros ready out of the box: <strong>saur · salp · sfur · subu · sdur · ssol</strong>
     </div>
   </div>
 
   <div class="usage r2">
     <div class="cc">
       <div class="cc-t">// install packages</div>
-      <pre><span class="cmt"># install in a distro env</span>
-<span class="kw">$</span> <span class="cmd">smdr</span> <span class="flag">-S</span> <span class="str">saur</span> <span class="cmd">neovim</span>
-<span class="kw">$</span> <span class="cmd">smdr</span> <span class="flag">-S</span> <span class="str">subu</span> <span class="cmd">htop</span>
-<span class="kw">$</span> <span class="cmd">smdr</span> <span class="flag">-S</span> <span class="str">skali</span> <span class="cmd">nmap</span>
-<span class="kw">$</span> <span class="cmd">smdr</span> <span class="flag">-S</span> <span class="str">stur</span> <span class="cmd">python</span></pre>
+      <pre><span class="cmt"># install into a capsule</span>
+<span class="kw">$</span> <span class="cmd">slite</span> <span class="flag">install</span> <span class="str">arch-box</span> <span class="cmd">neovim</span>
+<span class="kw">$</span> <span class="cmd">slite</span> <span class="flag">install</span> <span class="str">ubuntu-box</span> <span class="cmd">htop</span>
+<span class="kw">$</span> <span class="cmd">slite</span> <span class="flag">install</span> <span class="str">kali-box</span> <span class="cmd">nmap</span>
+<span class="kw">$</span> <span class="cmd">slite</span> <span class="flag">run</span> <span class="str">arch-box</span> <span class="cmd">python3</span></pre>
     </div>
     <div class="cc">
-      <div class="cc-t">// container lifecycle</div>
-      <pre><span class="cmt"># deploy a distro container</span>
-<span class="kw">$</span> <span class="cmd">smdr</span> <span class="flag">-adc</span> <span class="str">sfur</span>
-<span class="cmt"># pull &amp; sync image</span>
-<span class="kw">$</span> <span class="cmd">smdr</span> <span class="flag">-Sys</span> <span class="str">sdur</span>
-<span class="cmt"># arch arm (mobile)</span>
-<span class="kw">$</span> <span class="cmd">smdr</span> <span class="flag">-S</span> <span class="str">sarur</span> <span class="cmd">vim</span></pre>
+      <div class="cc-t">// capsule lifecycle</div>
+      <pre><span class="cmt"># create a capsule</span>
+<span class="kw">$</span> <span class="cmd">slite</span> <span class="flag">create</span> <span class="str">saur</span> <span class="cmd">arch-box</span>
+<span class="cmt"># enter its shell</span>
+<span class="kw">$</span> <span class="cmd">slite</span> <span class="flag">enter</span> <span class="str">arch-box</span>
+<span class="cmt"># list &amp; remove</span>
+<span class="kw">$</span> <span class="cmd">slite</span> <span class="flag">list</span></pre>
     </div>
   </div>
 
   <div class="usage-hint r">
-    <span>smdr -S [distro] [package]</span> &nbsp;·&nbsp; <span>smdr -adc [distro]</span> &nbsp;·&nbsp; <span>smdr -Sys [distro]</span>
-    &nbsp;&nbsp;<span style="color:var(--dim2)">Note: ensure distro alias is valid when using -Sys</span>
+    <span>slite create &lt;distro&gt; &lt;name&gt;</span> &nbsp;·&nbsp; <span>slite enter &lt;name&gt;</span> &nbsp;·&nbsp; <span>slite install &lt;name&gt; &lt;pkg&gt;</span>
+    &nbsp;&nbsp;<span style="color:var(--dim2)">Note: run "slite distros" to see all available base images</span>
   </div>
 </div>
 </div>
@@ -604,22 +751,22 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
   </div>
   <div class="cg r2">
     <a class="ccard" href="https://discord.gg/eBgVHSPru9" target="_blank">
-      <span class="ci"></span>
+      <span class="ci"><i data-lucide="message-circle"></i></span>
       <div class="ct">Discord</div>
       <div class="cd">Multilingual channels, support, and announcements.</div>
     </a>
     <a class="ccard" href="https://silverarchlinux.miraheze.org/wiki/" target="_blank">
-      <span class="ci"></span>
+      <span class="ci"><i data-lucide="book-open"></i></span>
       <div class="ct">Wiki</div>
       <div class="cd">Installation guides, configuration, and full documentation.</div>
     </a>
     <a class="ccard" href="https://github.com/s1lverarch/silverarch-repo" target="_blank">
-      <span class="ci"></span>
+      <span class="ci"><i data-lucide="cat"></i></span>
       <div class="ct">GitHub</div>
       <div class="cd">Open source code, issues, and pull requests.</div>
     </a>
     <a class="ccard" href="https://discord.gg/MFNY9m8dVr">
-      <span class="ci">󱧕</span>
+      <span class="ci"><i data-lucide="package-plus"></i></span>
       <div class="ct">Submit a Package</div>
       <div class="cd">Want your pkg in the repo? Reach out — 100% free.</div>
     </a>
@@ -667,18 +814,17 @@ footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;align-i
 <!-- FOOTER -->
 <footer>
   <a class="fl" href="#">
-    <img src="Un-removebg-preview.png" alt="" onerror="this.style.display='none'">
+    <img src="silverarch.png" alt="" onerror="this.style.display='none'">
     SilverArch Linux
   </a>
   <div class="flinks">
-    <a href="https://silverarchlinux.miraheze.org/wiki/" target="_blank">- Wiki</a>
-    <a href="https://discord.gg/eBgVHSPru9" target="_blank">- Discord</a>
-    <a href="https://github.com/iyed-one-st/silverarch-repo/" target="_blank">- GitHub</a>
-    <a href="https://github.com/iyed-one-st/silverarch-repo/blob/main/LICENSE.txt" target="_blank">- License</a>
-    <a href="mailto:s1lv3rcore@proton.me">󱡯- Contact</a>
+    <a href="https://silverarchlinux.miraheze.org/wiki/" target="_blank"><i data-lucide="book-open"></i>Wiki</a>
+    <a href="https://discord.gg/eBgVHSPru9" target="_blank"><i data-lucide="message-circle"></i>Discord</a>
+    <a href="https://github.com/s1lverarch/silverarch-repo/" target="_blank"><i data-lucide="cat"></i>GitHub</a>
+    <a href="https://github.com/s1lverarch/silverarch-repo/blob/main/LICENSE.txt" target="_blank"><i data-lucide="scale"></i>License</a>
+    <a href="mailto:s1lv3rcore@proton.me"><i data-lucide="mail"></i>Contact</a>
   </div>
-  <div class="fn">- 2026 Copyright Silverarch · By SilverCore</div>
-</footer>
+  <div class="fn">© 2026 Copyright Silverarch · By SilverCore</div>
 
 <script>
 // distros
@@ -712,7 +858,7 @@ distros.forEach(([n,a,m])=>{
 // pkg count
 async function updatePkgCount(){
   try{
-    const r=await fetch('https://api.github.com/repos/iyed-one-st/silverarch-repo/contents/x86_64');
+    const r=await fetch('https://api.github.com/repos/s1lverarch/silverarch-repo/contents/x86_64');
     const d=await r.json();
     const c=d.filter(f=>f.name.endsWith('.pkg.tar.zst')).length;
     document.getElementById('pkg-count').textContent=c||'—';
@@ -734,12 +880,66 @@ fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent('https:
     document.getElementById('news-list').innerHTML='<li><span class="arrow">›</span><a href="#">News feed unavailable.</a></li>';
   });
 
+// ── THEME ──────────────────────────────────────────────
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = document.getElementById('theme-icon');
+  if(icon){
+    icon.setAttribute('data-lucide', theme==='light' ? 'moon' : 'sun');
+    initIcons();
+  }
+  localStorage.setItem('sl-theme', theme);
+}
+
+// ── THEME ──────────────────────────────────────────────
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = document.getElementById('theme-icon');
+  if(icon){
+    icon.setAttribute('data-lucide', theme==='light' ? 'moon' : 'sun');
+    initIcons();
+  }
+  localStorage.setItem('sl-theme', theme);
+}
+
+// ── INIT: restore saved prefs ──────────────────────────
+const savedTheme = localStorage.getItem('sl-theme') || 'dark';
+applyTheme(savedTheme);
+
+// ── THEME TOGGLE ───────────────────────────────────────
+document.getElementById('theme-btn')?.addEventListener('click',()=>{
+  const cur = document.documentElement.getAttribute('data-theme');
+  applyTheme(cur==='light' ? 'dark' : 'light');
+});
+
 // copy code buttons
 function copyCode(btn){
   const pre=btn.closest('.code-block').querySelector('pre');
   navigator.clipboard.writeText(pre.innerText.replace(/^\$\s*/gm,'')).then(()=>{
     btn.textContent='copied!';btn.classList.add('copied');
-    setTimeout(()=>{btn.textContent='copy';btn.classList.remove('Copied !')},2000);
+    setTimeout(()=>{btn.textContent='copy';btn.classList.remove('copied')},2000);
+  });
+}
+
+// hero cursor spotlight (skips on touch / reduced-motion)
+const heroSpot=document.getElementById('hero-spot');
+const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(heroSpot && !prefersReduced && matchMedia('(hover:hover)').matches){
+  document.querySelector('.hero').addEventListener('pointermove',e=>{
+    const r=e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty('--mx',`${e.clientX-r.left}px`);
+    e.currentTarget.style.setProperty('--my',`${e.clientY-r.top}px`);
+  });
+}
+
+// feature-card glow follows cursor
+if(!prefersReduced && matchMedia('(hover:hover)').matches){
+  document.querySelectorAll('.fc').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',`${e.clientX-r.left}px`);
+      card.style.setProperty('--my',`${e.clientY-r.top}px`);
+    });
   });
 }
 
@@ -748,6 +948,59 @@ const obs=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}});
 },{threshold:.1});
 document.querySelectorAll('.r,.r2').forEach(e=>obs.observe(e));
+
+// render lucide icons everywhere (CDN-based, no font install needed on any device)
+function initIcons(){ if(window.lucide){ lucide.createIcons(); } }
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',initIcons);
+}else{ initIcons(); }
+window.addEventListener('load',initIcons); // safety net for defer timing
+
+// nav: shrink on scroll
+const siteNav=document.getElementById('site-nav');
+const onScroll=()=>{
+  if(window.scrollY>18) siteNav.classList.add('scrolled');
+  else siteNav.classList.remove('scrolled');
+};
+onScroll();
+window.addEventListener('scroll',onScroll,{passive:true});
+
+// nav: mobile burger toggle
+const navLinks=document.getElementById('nav-links');
+const burgerBtn=document.getElementById('nav-burger');
+burgerBtn?.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  burgerBtn.setAttribute('aria-expanded',open?'true':'false');
+  const icon=document.getElementById('burger-icon');
+  icon.setAttribute('data-lucide',open?'x':'menu');
+  initIcons();
+});
+navLinks?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navLinks.classList.remove('open');
+  burgerBtn.setAttribute('aria-expanded','false');
+  const icon=document.getElementById('burger-icon');
+  icon.setAttribute('data-lucide','menu');
+  initIcons();
+}));
+
+// nav: highlight active section on scroll
+const sections=['features','about','slite','community']
+  .map(id=>document.getElementById(id)).filter(Boolean);
+const navA=[...document.querySelectorAll('.nav-links a[data-nav]')];
+const setActive=id=>{
+  navA.forEach(a=>{
+    const href=a.getAttribute('href');
+    a.classList.toggle('active', href==='#'+id || (!id && href==='#'));
+  });
+};
+const secObs=new IntersectionObserver(entries=>{
+  const visible=entries.filter(en=>en.isIntersecting)
+    .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+  if(visible) setActive(visible.target.id);
+  else if(window.scrollY<300) setActive('');
+},{rootMargin:'-40% 0px -50% 0px',threshold:[0,.25,.5,.75,1]});
+sections.forEach(s=>secObs.observe(s));
+setActive('');
 </script>
 </body>
 </html>
