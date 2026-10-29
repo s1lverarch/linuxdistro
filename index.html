@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SilverArch Linux</title>
+<meta name="description" content="SilverArch Linux: an Arch-based distribution from Tunisia with the SilverNebula repository, SilverSaphire installer and Slite container engine.">
+<link rel="icon" href="assets/silverarch.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="matrix" aria-hidden="true"></canvas>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="brand" href="#top"><img src="assets/silverarch.png" alt="" width="30" height="30"> SilverArch Linux</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#repos"><i data-icon="github" data-size="sm"></i><span data-i18n="nav_repos">Repos</span></a></li>
+    <li><a href="#docs"><i data-icon="terminal" data-size="sm"></i><span data-i18n="nav_docs">Docs</span></a></li>
+    <li><a href="#installer"><i data-icon="settings" data-size="sm"></i><span data-i18n="nav_installer">Installer</span></a></li>
+    <li><a href="#iso"><i data-icon="disc" data-size="sm"></i><span data-i18n="nav_iso">ISO</span></a></li>
+    <li><a href="#setup"><i data-icon="package" data-size="sm"></i><span data-i18n="nav_setup">Repo setup</span></a></li>
+    <li><a href="#slite"><i data-icon="box" data-size="sm"></i><span data-i18n="nav_slite">Slite</span></a></li>
+    <li><a href="#community"><i data-icon="users" data-size="sm"></i><span data-i18n="nav_community">Community</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="search" role="search">
+      <i data-icon="search" data-size="sm"></i>
+      <input id="search-input" class="search-input" type="search" autocomplete="off" aria-label="Search" placeholder="Search repos, commands, sections…">
+      <kbd>/</kbd>
+      <div id="search-results" class="glass search-results" role="listbox"></div>
+    </div>
+    <div class="lang">
+      <button class="globe-btn" aria-label="Language" aria-haspopup="true"><i data-icon="globe"></i></button>
+      <div class="lang-menu glass" role="menu">
+        <button class="lang-opt" data-lang-opt="en" role="menuitem"><span>English</span><small>EN</small></button>
+        <button class="lang-opt" data-lang-opt="ar" role="menuitem"><span>العربية</span><small>AR</small></button>
+        <button class="lang-opt" data-lang-opt="fr" role="menuitem"><span>Français</span><small>FR</small></button>
+        <button class="lang-opt" data-lang-opt="ru" role="menuitem"><span>Русский</span><small>RU</small></button>
+      </div>
+    </div>
+    <button class="icon-btn" id="theme-btn" aria-label="Toggle theme"></button>
+    <a class="btn btn-primary btn-sm" href="#iso"><i data-icon="download" data-size="sm"></i><span data-i18n="nav_get">Get ISO</span></a>
+    <button class="icon-btn burger" id="burger" aria-label="Menu"><i data-icon="menu"></i></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span class="dot"></span><span data-i18n="hero_badge">Arch-based · Fast · Multilingual</span></span>
+      <h1><span data-i18n="hero_h1a">Built for</span> <span data-i18n="hero_h1b">speed and control</span></h1>
+      <p class="lead" data-i18n="hero_lead">SilverArch Linux is an Arch-based distribution from Tunisia.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#iso"><i data-icon="download"></i><span data-i18n="btn_iso">Download ISO</span></a>
+        <a class="btn" href="#repos"><i data-icon="github"></i><span data-i18n="btn_repos">Browse repositories</span></a>
+        <a class="btn" href="https://discord.gg/eBgVHSPru9" target="_blank" rel="noopener"><i data-icon="message"></i><span data-i18n="btn_discord">Discord</span></a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>6</b><span data-i18n="stat_repos">Repositories</span></div>
+        <div class="stat"><b id="stat-pkgs">6</b><span data-i18n="stat_pkgs">Repo packages</span></div>
+        <div class="stat"><b>GPL-3.0</b><span data-i18n="stat_license">License</span></div>
+        <div class="stat"><b>x86_64</b><span data-i18n="stat_arch">Architecture</span></div>
+      </div>
+    </div>
+    <div class="glass term">
+      <div class="term-head"><i style="background:#ff5f6e"></i><i style="background:#fde68a"></i><i style="background:#4ade80"></i><span style="margin-inline-start:8px">silverarch — boot</span></div>
+      <div class="term-body" id="boot-body"></div>
+    </div>
+  </div>
+</header>
+
+<section id="repos">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="repos_eyebrow">// projects</span>
+      <h2 data-i18n="repos_h2">Repositories</h2>
+      <p class="lead" data-i18n="repos_lead">Each card links to the real repository.</p></div>
+    <div class="repo-layout">
+      <div class="repo-grid" id="repo-grid"></div>
+      <figure class="glass preview rv" aria-label="Trailer preview">
+        <video id="preview-video" src="assets/trailer.mp4" muted loop playsinline preload="metadata" controls></video>
+        <figcaption data-i18n="preview_caption">Trailer preview</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="docs_eyebrow">// reference</span>
+      <h2 data-i18n="docs_h2">Command reference</h2>
+      <p class="lead" data-i18n="docs_lead">Only commands that exist in the code.</p></div>
+    <div class="docs" id="docs-list"><div id="docs-box"></div></div>
+  </div>
+</section>
+
+<section id="installer">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="installer_eyebrow">// installer</span>
+      <h2 data-i18n="installer_h2">Install SilverArch with silverss</h2>
+      <p class="lead" data-i18n="installer_lead">The installer is a guided terminal interface.</p></div>
+    <ol class="steps rv">
+      <li>Theme</li><li>Language</li><li>Keyboard</li><li>Timezone</li><li>Disk</li><li>Filesystem</li>
+      <li>Bootloader</li><li>Kernel</li><li>Network</li><li>User</li><li>Hostname</li><li>Desktop</li>
+      <li>Fonts</li><li>AUR</li><li>Security</li><li>Swap</li><li>GPU</li><li>Flatpak</li><li>SSH</li><li>Dotfiles</li><li>Review &amp; Install</li>
+    </ol>
+    <div class="keys rv">
+      <span class="key"><b>↑ ↓</b> move</span><span class="key"><b>enter</b> select</span><span class="key"><b>b</b> back</span>
+      <span class="key"><b>s</b> / <b>tab</b> skip</span><span class="key"><b>esc</b> cancel input</span><span class="key"><b>q</b> quit</span>
+    </div>
+  </div>
+</section>
+
+<section id="iso">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="iso_eyebrow">// installation media</span>
+      <h2 data-i18n="iso_h2">Download the ISO</h2>
+      <p class="lead" data-i18n="iso_lead">Verify the checksum before you install.</p></div>
+    <div class="glass iso rv">
+      <div>
+        <span class="tag">v2026.06.22 · x86_64</span>
+        <h3>SilverArch Full ISO</h3>
+        <div class="facts-grid">
+          <div class="fact"><b>1.1 GB</b><span data-i18n="iso_size">Size</span></div>
+          <div class="fact"><b>UEFI</b><span data-i18n="iso_boot">Boot</span></div>
+          <div class="fact"><b>Legacy</b><span data-i18n="iso_boot">Boot</span></div>
+        </div>
+        <div class="sha"><b data-i18n="iso_sha">SHA256</b><br><span id="iso-sha"></span></div>
+      </div>
+      <div class="iso-cta">
+        <a class="btn btn-primary" id="iso-link" href="#" target="_blank" rel="noopener"><i data-icon="download"></i><span data-i18n="iso_download">Open release page</span></a>
+        <button class="btn copy" data-copy="e03e748a145c65a43b21eaddf07be2e9520dc2ad89cbfa6243f203b756526bb7"><i data-icon="copy"></i><span data-i18n="iso_copy">Copy checksum</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="setup">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="setup_eyebrow">// pacman</span>
+      <h2 data-i18n="setup_h2">Add the SilverNebula repository</h2>
+      <p class="lead" data-i18n="setup_lead">Follow the three steps in order.</p></div>
+    <div class="setup">
+      <div class="glass step-card rv">
+        <span class="n"><i data-icon="shield" data-size="sm"></i>STEP 1</span>
+        <h3>Import and verify the key</h3>
+        <p>Download the public key and check its fingerprint before trusting it.</p>
+        <div class="code"><div class="code-h">terminal <button class="copy" data-copy="curl -fLO https://s1lverarch.github.io/linuxdistro/keys/silvernebula.gpg&#10;gpg --show-keys --with-fingerprint silvernebula.gpg&#10;sudo pacman-key --add silvernebula.gpg&#10;sudo pacman-key --lsign-key 8EA07B2205012BA364DBB14BCC892E251DCD1C44"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
+          <pre>curl -fLO https://github.com/s1lverarch/silvernebula/raw/refs/heads/main/silvernebula.gpg
+gpg --show-keys --with-fingerprint silvernebula.gpg
+sudo pacman-key --add silvernebula.gpg
+sudo pacman-key --lsign-key 8EA07B2205012BA364DBB14BCC892E251DCD1C44</pre></div>
+        <p class="mono" style="font-size:.74rem;color:var(--dim2)">Fingerprint: 8EA0 7B22 0501 2BA3 64DB B14B CC89 2E25 1DCD 1C44. If it differs, stop.</p>
+      </div>
+      <div class="glass step-card rv">
+        <span class="n"><i data-icon="plus" data-size="sm"></i>STEP 2</span>
+        <h3>Add the repository, signed</h3>
+        <p>Append this to <code>/etc/pacman.conf</code>. Packages and the database must be signed.</p>
+        <div class="code"><div class="code-h">pacman.conf <button class="copy" data-copy="[silvernebula]&#10;SigLevel = Required DatabaseOptional&#10;Server   = https://raw.githubusercontent.com/s1lverarch/silvernebula/main/$arch"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
+          <pre>[silvernebula]
+SigLevel = Required DatabaseOptional
+Server   = https://raw.githubusercontent.com/s1lverarch/silvernebula/main/$arch</pre></div>
+      </div>
+      <div class="glass step-card rv">
+        <span class="n"><i data-icon="refresh" data-size="sm"></i>STEP 3</span>
+        <h3>Sync and install the keyring</h3>
+        <p>The keyring package keeps the keys updated on later syncs.</p>
+        <div class="code"><div class="code-h">terminal <button class="copy" data-copy="sudo pacman -Syu&#10;sudo pacman -S silvernebula-keyring"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
+          <pre>sudo pacman -Syu
+sudo pacman -S silvernebula-keyring</pre></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="slite">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="slite_eyebrow">// container engine</span>
+      <h2 data-i18n="slite_h2">Slite</h2>
+      <p class="lead" data-i18n="slite_lead">A rootless, proot-based engine.</p></div>
+    <div class="glass rv" style="padding:24px;margin-top:36px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <b style="color:var(--strong)">Target distributions</b>
+        <span class="tag"><span id="distro-count">49</span> listed</span>
+      </div>
+      <div class="distros" id="distros"></div>
+    </div>
+  </div>
+</section>
+
+<section id="origin">
+  <div class="wrap origin">
+    <div class="rv">
+      <span class="eyebrow" data-i18n="origin_eyebrow">// origin</span>
+      <h2 data-i18n="origin_h2">Built by Silvercore</h2>
+      <p data-i18n="origin_p1">SilverArch Linux started as a personal project.</p>
+      <p data-i18n="origin_p2">It is the first Arabic Tunisian Arch-based distribution.</p>
+    </div>
+    <div class="rv">
+      <div class="glass profile">
+        <img src="assets/avatar.jpg" alt="Silvercore" loading="lazy">
+        <div><b>Silvercore (s1lverarch)</b><span>Creator &amp; maintainer · Tunisia</span>
+          <span class="mono" style="color:var(--accent);margin-top:6px;display:block">s1lv3rcore@proton.me</span></div>
+      </div>
+      <div class="glass news-feed">
+        <div class="news-feed-bar"><span>www.phoronix.com · RSS Feed</span><span>● live</span></div>
+        <ul class="news" id="news-list"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="community_eyebrow">// community</span>
+      <h2 data-i18n="community_h2">Get involved</h2>
+      <p class="lead" data-i18n="community_lead">Speakers of Arabic, French, English and Russian are welcome.</p></div>
+    <div class="community">
+      <a class="glass cta rv" href="https://discord.gg/eBgVHSPru9" target="_blank" rel="noopener"><h3><i data-icon="message"></i>Discord</h3><p data-i18n="community_discord">Join the Discord server</p><span class="go">discord.gg →</span></a>
+      <a class="glass cta rv" href="https://github.com/s1lverarch" target="_blank" rel="noopener"><h3><i data-icon="github"></i>GitHub</h3><p data-i18n="community_github">Browse the code</p><span class="go">github.com/s1lverarch →</span></a>
+      <a class="glass cta rv" href="https://silverarchlinux.miraheze.org/wiki/" target="_blank" rel="noopener"><h3><i data-icon="book"></i>Wiki</h3><p data-i18n="community_wiki">Read the wiki</p><span class="go">silverarchlinux.miraheze.org →</span></a>
+      <a class="glass cta rv" href="mailto:s1lv3rcore@proton.me"><h3><i data-icon="mail"></i>Contact</h3><p data-i18n="community_contact">Contact the maintainer</p><span class="go">s1lv3rcore@proton.me</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="glass pal rv">
+    <p><i data-icon="flag" class="ic"></i> <b data-i18n="palestine_title">We stand with Palestine.</b> <span data-i18n="palestine_text">Free Palestine.</span></p>
+    <a class="btn btn-primary" href="https://www.unrwa.org" target="_blank" rel="noopener"><i data-icon="external"></i><span data-i18n="palestine_btn">Learn more about the Palestine war</span></a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="brand"><img src="assets/silverarch.png" alt="" width="28" height="28"> SilverArch Linux</div>
+        <p data-i18n="footer_tag">Arch-based, minimal and community-driven.</p>
+      </div>
+      <div><h4 data-i18n="footer_project">Project</h4>
+        <a href="#repos"><i data-icon="github" data-size="sm"></i>Repositories</a>
+        <a href="#installer"><i data-icon="settings" data-size="sm"></i>Installer</a>
+        <a href="#slite"><i data-icon="box" data-size="sm"></i>Slite</a>
+        <a href="#iso"><i data-icon="disc" data-size="sm"></i>ISO</a></div>
+      <div><h4 data-i18n="footer_docs">Docs</h4>
+        <a href="#docs"><i data-icon="terminal" data-size="sm"></i>Commands</a>
+        <a href="#setup"><i data-icon="package" data-size="sm"></i>Repo setup</a>
+        <a href="https://silverarchlinux.miraheze.org/wiki/" target="_blank" rel="noopener"><i data-icon="book" data-size="sm"></i>Wiki</a></div>
+      <div><h4 data-i18n="footer_community">Community</h4>
+        <a href="https://discord.gg/eBgVHSPru9" target="_blank" rel="noopener"><i data-icon="message" data-size="sm"></i>Discord</a>
+        <a href="https://github.com/s1lverarch" target="_blank" rel="noopener"><i data-icon="github" data-size="sm"></i>GitHub</a>
+        <a href="mailto:s1lv3rcore@proton.me"><i data-icon="mail" data-size="sm"></i>Contact</a></div>
+    </div>
+    <div class="copyright">
+      <span>© 2026 SilverArch Linux · Silvercore</span>
+      <span>GPL-3.0 · <i data-icon="heart" data-size="sm"></i> Tunisia</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="i18n.js"></script>
+<script src="icons.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
