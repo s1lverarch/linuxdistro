@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SilverArch Linux</title>
-<meta name="description" content="SilverArch Linux: an Arch-based distribution from Tunisia with the SilverNebula repository, SilverSaphire installer and Slite container engine.">
+<title>SilverArch Linux — Tunisian indie Linux distribution</title>
+<meta name="description" content="SilverArch Linux: the first Tunisian indie Linux distribution, built on Arch. SilverNebula repository, SilverSaphire installer and Slite container engine.">
 <link rel="icon" href="assets/silverarch.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;600;700&display=swap">
@@ -12,47 +12,55 @@
 </head>
 <body>
 
-<canvas id="matrix" aria-hidden="true"></canvas>
-
 <nav class="nav" id="nav" aria-label="Main">
-  <a class="brand" href="#top"><img src="assets/silverarch.png" alt="" width="30" height="30"> SilverArch Linux</a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#repos"><i data-icon="github" data-size="sm"></i><span data-i18n="nav_repos">Repos</span></a></li>
-    <li><a href="#docs"><i data-icon="terminal" data-size="sm"></i><span data-i18n="nav_docs">Docs</span></a></li>
-    <li><a href="#installer"><i data-icon="settings" data-size="sm"></i><span data-i18n="nav_installer">Installer</span></a></li>
-    <li><a href="#iso"><i data-icon="disc" data-size="sm"></i><span data-i18n="nav_iso">ISO</span></a></li>
-    <li><a href="#setup"><i data-icon="package" data-size="sm"></i><span data-i18n="nav_setup">Repo setup</span></a></li>
-    <li><a href="#slite"><i data-icon="box" data-size="sm"></i><span data-i18n="nav_slite">Slite</span></a></li>
-    <li><a href="#community"><i data-icon="users" data-size="sm"></i><span data-i18n="nav_community">Community</span></a></li>
-  </ul>
-  <div class="nav-right">
-    <div class="search" role="search">
-      <i data-icon="search" data-size="sm"></i>
-      <input id="search-input" class="search-input" type="search" autocomplete="off" aria-label="Search" placeholder="Search repos, commands, sections…">
-      <kbd>/</kbd>
-      <div id="search-results" class="glass search-results" role="listbox"></div>
-    </div>
-    <div class="lang">
-      <button class="globe-btn" aria-label="Language" aria-haspopup="true"><i data-icon="globe"></i></button>
-      <div class="lang-menu glass" role="menu">
-        <button class="lang-opt" data-lang-opt="en" role="menuitem"><span>English</span><small>EN</small></button>
-        <button class="lang-opt" data-lang-opt="ar" role="menuitem"><span>العربية</span><small>AR</small></button>
-        <button class="lang-opt" data-lang-opt="fr" role="menuitem"><span>Français</span><small>FR</small></button>
-        <button class="lang-opt" data-lang-opt="ru" role="menuitem"><span>Русский</span><small>RU</small></button>
+  <div class="nav-inner" id="nav-inner">
+    <a class="brand" href="#top"><img src="assets/silverarch.png" alt="" width="30" height="30"><span>SilverArch Linux</span></a>
+    <ul class="nav-links" id="nav-links">
+     <li><a href="#repos">Repos</a></li>
+     <li><a href="#features">Features</a></li>
+     <li><a href="#tools">Tools</a></li>
+     <li><a href="#slite">Slite</a></li>
+     <li><a href="#download">ISO</a></li>
+     <li><a href="#setup">Repo Setup</a></li>
+     <li><a href="#community">Community</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="search">
+        <input id="search-input" class="search-input" type="search" autocomplete="off" aria-label="Search" placeholder="Search repos, commands, sections…">
+        <kbd>/</kbd>
+        <div id="search-results" class="glass search-results" role="listbox"></div>
       </div>
+      <div class="lang">
+        <button class="globe-btn" aria-label="Language" aria-haspopup="true"><i data-icon="globe"></i></button>
+        <div class="lang-menu" role="menu">
+          <button class="lang-opt" data-lang-opt="en" role="menuitem"><span>🇬🇧 : English</span><small>EN</small></button>
+          <button class="lang-opt" data-lang-opt="ar" role="menuitem"><span>🇸🇦 : العربي</span><small>AR</small></button>
+          <button class="lang-opt" data-lang-opt="fr" role="menuitem"><span>🇫🇷 : Français</span><small>FR</small></button>
+          <button class="lang-opt" data-lang-opt="ru" role="menuitem"><span>🇷🇺 : Русский</span><small>RU</small></button>
+        </div>
+      </div>
+      <button class="icon-btn" id="theme-btn" aria-label="Toggle theme"></button>
+      <button class="icon-btn burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-sheet"><i data-icon="menu"></i></button>
     </div>
-    <button class="icon-btn" id="theme-btn" aria-label="Toggle theme"></button>
-    <a class="btn btn-primary btn-sm" href="#iso"><i data-icon="download" data-size="sm"></i><span data-i18n="nav_get">Get ISO</span></a>
-    <button class="icon-btn burger" id="burger" aria-label="Menu"><i data-icon="menu"></i></button>
+  </div>
+  <div class="nav-sheet glass" id="nav-sheet">
+    <a href="#repos"><i data-icon="github" data-size="sm"></i><span data-i18n="nav_repos">Repos</span></a>
+    <a href="#explore"><i data-icon="star" data-size="sm"></i><span data-i18n="nav_apps">Apps</span></a>
+    <a href="#docs"><i data-icon="terminal" data-size="sm"></i><span data-i18n="nav_docs">Commands</span></a>
+    <a href="#installer"><i data-icon="settings" data-size="sm"></i><span data-i18n="nav_installer">Installer</span></a>
+    <a href="#iso"><i data-icon="disc" data-size="sm"></i><span data-i18n="nav_iso">ISO</span></a>
+    <a href="#setup"><i data-icon="package" data-size="sm"></i><span data-i18n="nav_setup">Repo setup</span></a>
+    <a href="#slite"><i data-icon="box" data-size="sm"></i><span data-i18n="nav_slite">Slite</span></a>
+    <a href="#community"><i data-icon="users" data-size="sm"></i><span data-i18n="nav_community">Community</span></a>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <span class="pill"><span class="dot"></span><span data-i18n="hero_badge">Arch-based · Fast · Multilingual</span></span>
+      <span class="pill"><span class="dot"></span><span data-i18n="hero_badge">Tunisian · Indie · Arch-based</span></span>
       <h1><span data-i18n="hero_h1a">Built for</span> <span data-i18n="hero_h1b">speed and control</span></h1>
-      <p class="lead" data-i18n="hero_lead">SilverArch Linux is an Arch-based distribution from Tunisia.</p>
+      <p class="lead" data-i18n="hero_lead">SilverArch Linux is the first Tunisian indie Linux distribution.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#iso"><i data-icon="download"></i><span data-i18n="btn_iso">Download ISO</span></a>
         <a class="btn" href="#repos"><i data-icon="github"></i><span data-i18n="btn_repos">Browse repositories</span></a>
@@ -71,6 +79,130 @@
     </div>
   </div>
 </header>
+
+<section id="explore">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="explore_eyebrow">// explore</span>
+      <h2 data-i18n="explore_h2">Everything in one place</h2>
+      <p class="lead" data-i18n="explore_lead">Projects, apps, the installer, pacman and the distribution.</p></div>
+    <div class="tabs-wrap rv">
+      <button class="tabs-toggle glass" id="tabs-toggle" aria-expanded="false" aria-controls="tabs-menu"><i data-icon="menu"></i><span data-i18n="tabs_menu">Sections</span></button>
+      <div class="tabs glass" id="tabs-menu" role="tablist" aria-label="Explore">
+      <button class="tab" role="tab" data-tab="projects" aria-selected="true"><i data-icon="package" data-size="sm"></i><span data-i18n="tab_projects">Projects</span></button>
+      <button class="tab" role="tab" data-tab="apps" aria-selected="false"><i data-icon="disc" data-size="sm"></i><span data-i18n="tab_apps">My apps</span></button>
+      <button class="tab" role="tab" data-tab="installer" aria-selected="false"><i data-icon="settings" data-size="sm"></i><span data-i18n="tab_installer">Installer</span></button>
+      <button class="tab" role="tab" data-tab="pacman" aria-selected="false"><i data-icon="terminal" data-size="sm"></i><span data-i18n="tab_pacman">Pacman</span></button>
+      <button class="tab" role="tab" data-tab="distro" aria-selected="false"><i data-icon="shield" data-size="sm"></i><span data-i18n="tab_distro">Distro</span></button>
+    </div>
+    </div>
+
+    <div class="glass tab-panel active" role="tabpanel" id="panel-projects"><div class="tab-grid" id="tab-projects"></div></div>
+
+    <div class="glass tab-panel" role="tabpanel" id="panel-apps">
+      <div class="app-icons" id="app-icons" role="list"></div>
+      <div class="app-detail" id="app-detail" aria-live="polite"></div>
+    </div>
+
+    <div class="glass tab-panel" role="tabpanel" id="panel-installer">
+      <ol class="steps" id="steps" style="margin-top:0"></ol>
+      <div class="keys">
+        <span class="key"><b>↑ ↓</b> <span data-i18n="keys_move">move</span></span>
+        <span class="key"><b>enter</b> <span data-i18n="keys_select">select</span></span>
+        <span class="key"><b>b</b> <span data-i18n="keys_back">back</span></span>
+        <span class="key"><b>s</b> / <b>tab</b> <span data-i18n="keys_skip">skip</span></span>
+        <span class="key"><b>esc</b> <span data-i18n="keys_cancel">cancel</span></span>
+        <span class="key"><b>q</b> <span data-i18n="keys_quit">quit</span></span>
+      </div>
+    </div>
+
+    <div class="glass tab-panel" role="tabpanel" id="panel-pacman">
+      <div class="cmdline"><code>curl -fLO https://s1lverarch.github.io/linuxdistro/keys/silvernebula.gpg</code><button class="copy" data-copy="curl -fLO https://s1lverarch.github.io/linuxdistro/keys/silvernebula.gpg"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
+      <div class="cmdline"><code>gpg --show-keys --with-fingerprint silvernebula.gpg</code><button class="copy" data-copy="gpg --show-keys --with-fingerprint silvernebula.gpg"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
+      <div class="cmdline"><code>sudo pacman-key --add silvernebula.gpg</code><button class="copy" data-copy="sudo pacman-key --add silvernebula.gpg"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
+      <div class="cmdline"><code>sudo pacman-key --lsign-key 8EA07B2205012BA364DBB14BCC892E251DCD1C44</code><button class="copy" data-copy="sudo pacman-key --lsign-key 8EA07B2205012BA364DBB14BCC892E251DCD1C44"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
+    </div>
+
+    <div class="glass tab-panel" role="tabpanel" id="panel-distro">
+      <h3 style="color:var(--strong);font-size:1.4rem;margin-bottom:12px" data-i18n="distro_title">SilverArch Linux</h3>
+      <p class="lead" data-i18n="distro_text">A Tunisian indie Linux distribution based on Arch.</p>
+      <ul class="plain-list" style="margin-top:20px">
+        <li><span data-i18n="distro_base">Base</span></li>
+        <li><span data-i18n="distro_repo">Repository</span></li>
+        <li><span data-i18n="distro_tools">Tools</span></li>
+        <li><span data-i18n="distro_license">License</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="gallery_eyebrow">// gallery</span>
+      <h2 data-i18n="gallery_h2">Wallpapers</h2>
+      <p class="lead" data-i18n="gallery_lead">Tap an image to open it full screen.</p></div>
+    <div class="gallery">
+      <button class="g-item glass rv" data-g="1" aria-label="Wallpaper 1"><img src="assets/gallery-1.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-item glass rv" data-g="2" aria-label="Wallpaper 2"><img src="assets/gallery-2.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-item glass rv" data-g="3" aria-label="Wallpaper 3"><img src="assets/gallery-3.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-item glass rv" data-g="4" aria-label="Wallpaper 4"><img src="assets/gallery-4.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-item glass rv" data-g="5" aria-label="Wallpaper 5"><img src="assets/gallery-5.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-item glass rv" data-g="6" aria-label="Wallpaper 6"><img src="assets/gallery-6.jpg" alt="" loading="lazy" decoding="async"></button>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
+  <button class="lb-close icon-btn glass" data-lb="close" aria-label="Close"><i data-icon="close"></i></button>
+  <button class="lb-nav icon-btn glass" data-lb="prev" aria-label="Previous"><i data-icon="chevron-left"></i></button>
+  <img id="lb-img" alt="">
+  <button class="lb-nav icon-btn glass" data-lb="next" aria-label="Next"><i data-icon="chevron-right"></i></button>
+</div>
+
+<section id="lab">
+  <div class="wrap">
+    <div class="rv"><span class="eyebrow" data-i18n="lab_eyebrow">// lab</span>
+      <h2 data-i18n="lab_h2">Tools on this site</h2>
+      <p class="lead" data-i18n="lab_lead">Live data from the real repository, GitHub and the installer.</p></div>
+
+    <div class="lab-grid">
+      <div class="glass lab-card rv">
+        <h3 data-i18n="pkg_h">Package search</h3>
+        <p class="lab-note" data-i18n="pkg_note">Read from x86_64/silvernebula.db in the repository.</p>
+        <div class="lab-bar"><input id="pkg-q" class="lab-input" type="search" autocomplete="off" placeholder="silver…" aria-label="Search packages"><span id="pkg-count" class="tag"></span></div>
+        <p id="pkg-status" class="lab-note"></p>
+        <div id="pkg-results" class="pkg-list"></div>
+      </div>
+
+      <div class="glass lab-card rv">
+        <h3 data-i18n="cl_h">Changelog</h3>
+        <p class="lab-note" data-i18n="cl_note">Latest commits from GitHub, grouped by type.</p>
+        <div class="lab-bar"><select id="cl-repo" class="lab-input" aria-label="Repository"></select></div>
+        <ul id="cl-list" class="cl-list"></ul>
+      </div>
+
+      <div class="glass lab-card lab-wide rv">
+        <h3 data-i18n="th_h">Installer themes</h3>
+        <p class="lab-note" data-i18n="th_note">Pick a theme to preview the installer colours. This does not change the site.</p>
+        <div id="th-chips" class="th-chips"></div>
+        <div class="th-stage">
+          <div id="th-preview" class="th-preview">
+            <div class="th-top">ss — SilverSaphire</div>
+            <div class="th-body">
+              <div class="th-side"><div class="th-on">▶ Theme</div><div class="th-ok">✓ Language</div><div>  Keyboard</div><div>  Timezone</div></div>
+              <div class="th-main"><div class="th-title">Choose Installer Theme</div>
+                <div class="th-opt th-sel">▶  SilverCore   <span class="th-warn">recommended</span></div>
+                <div class="th-opt">   Crimson</div><div class="th-opt">   Aurora</div><div class="th-opt">   Nebula</div>
+              </div>
+            </div>
+            <div class="th-foot">↑↓ navigate   enter select   q quit</div>
+          </div>
+          <pre id="th-code" class="th-code"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="repos">
   <div class="wrap">
@@ -92,24 +224,7 @@
     <div class="rv"><span class="eyebrow" data-i18n="docs_eyebrow">// reference</span>
       <h2 data-i18n="docs_h2">Command reference</h2>
       <p class="lead" data-i18n="docs_lead">Only commands that exist in the code.</p></div>
-    <div class="docs" id="docs-list"><div id="docs-box"></div></div>
-  </div>
-</section>
-
-<section id="installer">
-  <div class="wrap">
-    <div class="rv"><span class="eyebrow" data-i18n="installer_eyebrow">// installer</span>
-      <h2 data-i18n="installer_h2">Install SilverArch with silverss</h2>
-      <p class="lead" data-i18n="installer_lead">The installer is a guided terminal interface.</p></div>
-    <ol class="steps rv">
-      <li>Theme</li><li>Language</li><li>Keyboard</li><li>Timezone</li><li>Disk</li><li>Filesystem</li>
-      <li>Bootloader</li><li>Kernel</li><li>Network</li><li>User</li><li>Hostname</li><li>Desktop</li>
-      <li>Fonts</li><li>AUR</li><li>Security</li><li>Swap</li><li>GPU</li><li>Flatpak</li><li>SSH</li><li>Dotfiles</li><li>Review &amp; Install</li>
-    </ol>
-    <div class="keys rv">
-      <span class="key"><b>↑ ↓</b> move</span><span class="key"><b>enter</b> select</span><span class="key"><b>b</b> back</span>
-      <span class="key"><b>s</b> / <b>tab</b> skip</span><span class="key"><b>esc</b> cancel input</span><span class="key"><b>q</b> quit</span>
-    </div>
+    <div class="docs"><div id="docs-box"></div></div>
   </div>
 </section>
 
@@ -141,23 +256,23 @@
   <div class="wrap">
     <div class="rv"><span class="eyebrow" data-i18n="setup_eyebrow">// pacman</span>
       <h2 data-i18n="setup_h2">Add the SilverNebula repository</h2>
-      <p class="lead" data-i18n="setup_lead">Follow the three steps in order.</p></div>
+      <p class="lead" data-i18n="setup_lead">Import and verify the key first, then add the repository with signatures required.</p></div>
     <div class="setup">
       <div class="glass step-card rv">
         <span class="n"><i data-icon="shield" data-size="sm"></i>STEP 1</span>
-        <h3>Import and verify the key</h3>
-        <p>Download the public key and check its fingerprint before trusting it.</p>
+        <h3 data-i18n="step1_title">Import and verify the key</h3>
+        <p data-i18n="step1_text">Download the public key and check its fingerprint.</p>
         <div class="code"><div class="code-h">terminal <button class="copy" data-copy="curl -fLO https://s1lverarch.github.io/linuxdistro/keys/silvernebula.gpg&#10;gpg --show-keys --with-fingerprint silvernebula.gpg&#10;sudo pacman-key --add silvernebula.gpg&#10;sudo pacman-key --lsign-key 8EA07B2205012BA364DBB14BCC892E251DCD1C44"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
-          <pre>curl -fLO https://github.com/s1lverarch/silvernebula/raw/refs/heads/main/silvernebula.gpg
+          <pre>curl -fLO https://s1lverarch.github.io/linuxdistro/keys/silvernebula.gpg
 gpg --show-keys --with-fingerprint silvernebula.gpg
 sudo pacman-key --add silvernebula.gpg
 sudo pacman-key --lsign-key 8EA07B2205012BA364DBB14BCC892E251DCD1C44</pre></div>
-        <p class="mono" style="font-size:.74rem;color:var(--dim2)">Fingerprint: 8EA0 7B22 0501 2BA3 64DB B14B CC89 2E25 1DCD 1C44. If it differs, stop.</p>
+        <p class="mono" style="font-size:.74rem;color:var(--dim2)">8EA0 7B22 0501 2BA3 64DB B14B CC89 2E25 1DCD 1C44 · <span data-i18n="step1_fp">If the fingerprint differs, stop.</span></p>
       </div>
       <div class="glass step-card rv">
         <span class="n"><i data-icon="plus" data-size="sm"></i>STEP 2</span>
-        <h3>Add the repository, signed</h3>
-        <p>Append this to <code>/etc/pacman.conf</code>. Packages and the database must be signed.</p>
+        <h3 data-i18n="step2_title">Add the repository, signed</h3>
+        <p data-i18n="step2_text">Append this block to /etc/pacman.conf.</p>
         <div class="code"><div class="code-h">pacman.conf <button class="copy" data-copy="[silvernebula]&#10;SigLevel = Required DatabaseOptional&#10;Server   = https://raw.githubusercontent.com/s1lverarch/silvernebula/main/$arch"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
           <pre>[silvernebula]
 SigLevel = Required DatabaseOptional
@@ -165,8 +280,8 @@ Server   = https://raw.githubusercontent.com/s1lverarch/silvernebula/main/$arch<
       </div>
       <div class="glass step-card rv">
         <span class="n"><i data-icon="refresh" data-size="sm"></i>STEP 3</span>
-        <h3>Sync and install the keyring</h3>
-        <p>The keyring package keeps the keys updated on later syncs.</p>
+        <h3 data-i18n="step3_title">Sync and install the keyring</h3>
+        <p data-i18n="step3_text">The keyring package keeps the keys updated.</p>
         <div class="code"><div class="code-h">terminal <button class="copy" data-copy="sudo pacman -Syu&#10;sudo pacman -S silvernebula-keyring"><i data-icon="copy" data-size="sm"></i><span data-i18n="copy">Copy</span></button></div>
           <pre>sudo pacman -Syu
 sudo pacman -S silvernebula-keyring</pre></div>
@@ -182,8 +297,8 @@ sudo pacman -S silvernebula-keyring</pre></div>
       <p class="lead" data-i18n="slite_lead">A rootless, proot-based engine.</p></div>
     <div class="glass rv" style="padding:24px;margin-top:36px">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-        <b style="color:var(--strong)">Target distributions</b>
-        <span class="tag"><span id="distro-count">49</span> listed</span>
+        <b style="color:var(--strong)" data-i18n="slite_targets">Target distributions</b>
+        <span class="tag"><span id="distro-count">49</span> <span data-i18n="slite_listed">listed</span></span>
       </div>
       <div class="distros" id="distros"></div>
     </div>
@@ -196,16 +311,17 @@ sudo pacman -S silvernebula-keyring</pre></div>
       <span class="eyebrow" data-i18n="origin_eyebrow">// origin</span>
       <h2 data-i18n="origin_h2">Built by Silvercore</h2>
       <p data-i18n="origin_p1">SilverArch Linux started as a personal project.</p>
-      <p data-i18n="origin_p2">It is the first Arabic Tunisian Arch-based distribution.</p>
+      <p data-i18n="origin_p2">It is the first Tunisian indie Linux distribution.</p>
     </div>
     <div class="rv">
       <div class="glass profile">
         <img src="assets/avatar.jpg" alt="Silvercore" loading="lazy">
-        <div><b>Silvercore (s1lverarch)</b><span>Creator &amp; maintainer · Tunisia</span>
-          <span class="mono" style="color:var(--accent);margin-top:6px;display:block">s1lv3rcore@proton.me</span></div>
+        <div><b>Silvercore (s1lverarch)</b><span>Tunisia</span>
+          <span class="mono" style="color:var(--accent);margin-top:6px">s1lv3rcore@proton.me</span></div>
       </div>
       <div class="glass news-feed">
-        <div class="news-feed-bar"><span>www.phoronix.com · RSS Feed</span><span>● live</span></div>
+        <div class="news-feed-bar"><span>www.phoronix.com · <span data-i18n="news_rss">RSS</span> Feed</span><span data-i18n="news_live">live</span></div>
+        <h4 class="news-title" data-i18n="news_title">Latest from Phoronix</h4>
         <ul class="news" id="news-list"></ul>
       </div>
     </div>
@@ -226,7 +342,7 @@ sudo pacman -S silvernebula-keyring</pre></div>
   </div>
 </section>
 
-<div class="wrap">
+<div class="wrap" style="margin-top:40px">
   <div class="glass pal rv">
     <p><i data-icon="flag" class="ic"></i> <b data-i18n="palestine_title">We stand with Palestine.</b> <span data-i18n="palestine_text">Free Palestine.</span></p>
     <a class="btn btn-primary" href="https://www.unrwa.org" target="_blank" rel="noopener"><i data-icon="external"></i><span data-i18n="palestine_btn">Learn more about the Palestine war</span></a>
@@ -238,11 +354,11 @@ sudo pacman -S silvernebula-keyring</pre></div>
     <div class="foot">
       <div>
         <div class="brand"><img src="assets/silverarch.png" alt="" width="28" height="28"> SilverArch Linux</div>
-        <p data-i18n="footer_tag">Arch-based, minimal and community-driven.</p>
+        <p data-i18n="footer_tag">Tunisian indie, Arch-based, minimal.</p>
       </div>
       <div><h4 data-i18n="footer_project">Project</h4>
         <a href="#repos"><i data-icon="github" data-size="sm"></i>Repositories</a>
-        <a href="#installer"><i data-icon="settings" data-size="sm"></i>Installer</a>
+        <a href="#explore"><i data-icon="star" data-size="sm"></i>Apps</a>
         <a href="#slite"><i data-icon="box" data-size="sm"></i>Slite</a>
         <a href="#iso"><i data-icon="disc" data-size="sm"></i>ISO</a></div>
       <div><h4 data-i18n="footer_docs">Docs</h4>
@@ -254,10 +370,7 @@ sudo pacman -S silvernebula-keyring</pre></div>
         <a href="https://github.com/s1lverarch" target="_blank" rel="noopener"><i data-icon="github" data-size="sm"></i>GitHub</a>
         <a href="mailto:s1lv3rcore@proton.me"><i data-icon="mail" data-size="sm"></i>Contact</a></div>
     </div>
-    <div class="copyright">
-      <span>© 2026 SilverArch Linux · Silvercore</span>
-      <span>GPL-3.0 · <i data-icon="heart" data-size="sm"></i> Tunisia</span>
-    </div>
+    <div class="copyright"><span>© 2026 SilverArch Linux · Silvercore</span><span>GPL-3.0 · Tunisia</span></div>
   </div>
 </footer>
 
@@ -265,5 +378,7 @@ sudo pacman -S silvernebula-keyring</pre></div>
 <script src="i18n.js"></script>
 <script src="icons.js"></script>
 <script src="app.js"></script>
+<script src="gallery.js"></script>
+<script src="lab.js"></script>
 </body>
 </html>

@@ -1,149 +1,201 @@
-/* SilverArch / SilverNebula site data.
-   Everything here is taken from the real projects and their READMEs/PKGBUILDs.
-   Edit this file to change content; no HTML changes needed. */
+/* SilverArch Linux site data. Real projects and real commands only.
+   Text fields are objects keyed by language: { en, ar, fr, ru }. Commands are never translated. */
 window.SA_DATA = {
   repos: [
-    { name: "silverpurge", lang: "Nim", tag: "System cleanup", commits: 5, updated: "2026-10-26",
-      url: "https://github.com/s1lverarch/silverpurge",
-      desc: { en: "Cleans orphan packages, the pacman package cache, systemd journal logs, trash and thumbnails. Dry-run by default.",
-              ar: "ينظف الحزم اليتيمة وكاش pacman وسجلات journal والمهملات والصور المصغّرة. وضع المعاينة هو الافتراضي.",
-              fr: "Nettoie les paquets orphelins, le cache pacman, les journaux systemd, la corbeille et les miniatures. Simulation par défaut.",
-              ru: "Очищает сиротские пакеты, кэш pacman, журналы systemd, корзину и миниатюры. По умолчанию — предпросмотр." } },
-    { name: "silverflux", lang: "Lua", tag: "Sync", commits: 4, updated: "2026-10-26",
-      url: "https://github.com/s1lverarch/silverflux",
-      desc: { en: "One command for mirror ranking, pacman upgrade, AUR upgrade and cleanup of old package versions.",
+    { name: "silverpurge", lang: "Nim", tag: "System cleanup", commits: 5, updated: "2026-10-26", url: "https://github.com/s1lverarch/silverpurge",
+      desc: { en: "Cleans orphan packages, pacman cache, journal logs, trash and thumbnails. Dry-run by default.",
+              ar: "ينظّف الحزم اليتيمة وكاش pacman وسجلات journal والمهملات والصور المصغّرة. المعاينة هي الافتراضي.",
+              fr: "Nettoie les paquets orphelins, le cache pacman, les journaux, la corbeille et les miniatures. Simulation par défaut.",
+              ru: "Очищает сиротские пакеты, кэш pacman, журналы, корзину и миниатюры. По умолчанию — предпросмотр." } },
+    { name: "silverflux", lang: "Lua", tag: "Sync", commits: 4, updated: "2026-10-26", url: "https://github.com/s1lverarch/silverflux",
+      desc: { en: "One command for mirror ranking, pacman upgrade, AUR upgrade and cleanup of old versions.",
               ar: "أمر واحد لترتيب المرايات وتحديث pacman وAUR وتنظيف النسخ القديمة.",
-              fr: "Une seule commande pour classer les miroirs, mettre à jour pacman et l'AUR et nettoyer les anciennes versions.",
-              ru: "Одна команда для выбора зеркал, обновления pacman и AUR и очистки старых версий пакетов." } },
-    { name: "silvergrab", lang: "Go", tag: "Package manager", commits: 6, updated: "2026-10-25",
-      url: "https://github.com/s1lverarch/silvergrab",
+              fr: "Une commande pour classer les miroirs, mettre à jour pacman et l'AUR, et nettoyer les anciennes versions.",
+              ru: "Одна команда для зеркал, обновления pacman и AUR и очистки старых версий." } },
+    { name: "silvergrab", lang: "Go", tag: "Package manager", commits: 6, updated: "2026-10-25", url: "https://github.com/s1lverarch/silvergrab",
       desc: { en: "A pacman wrapper with a paru-style interface for installing, removing and searching packages.",
               ar: "غلاف لـ pacman بواجهة شبيهة بـ paru للتثبيت والحذف والبحث.",
-              fr: "Une surcouche de pacman à l'interface type paru pour installer, supprimer et chercher des paquets.",
-              ru: "Обёртка над pacman в стиле paru для установки, удаления и поиска пакетов." } },
-    { name: "SilverSaphire", lang: "Go + Nim", tag: "Installer", commits: 20, updated: "2026-10-17",
-      url: "https://github.com/s1lverarch/SilverSaphire",
-      desc: { en: "The SilverArch installer (binary: silverss). Guided terminal UI with themes, timezone entry and a full install flow.",
-              ar: "مثبّت SilverArch (الملف التنفيذي: silverss). واجهة طرفية موجّهة مع سمات وإدخال المنطقة الزمنية وتدفق تثبيت كامل.",
-              fr: "L'installateur SilverArch (binaire : silverss). TUI guidée avec thèmes, fuseau horaire et installation complète.",
-              ru: "Установщик SilverArch (бинарник: silverss). Пошаговый TUI с темами, часовым поясом и полной установкой." } },
-    { name: "silvernebula", lang: "Arch ISO", tag: "Build hub + repo", commits: 4, updated: "stable",
-      url: "https://github.com/s1lverarch/silvernebula",
-      desc: { en: "The distribution build hub: ISO profiles, installers and the signed pacman repository (x86_64).",
-              ar: "مركز بناء التوزيعة: ملفات ISO والمثبتات والمستودع الموقّع لـ pacman (x86_64).",
-              fr: "Le centre de build : profils ISO, installateurs et dépôt pacman signé (x86_64).",
-              ru: "Центр сборки: профили ISO, установщики и подписанный репозиторий pacman (x86_64)." } },
-    { name: "slite", lang: "Rootless", tag: "Container engine", commits: null, updated: "v1.9.4",
-      url: "https://github.com/s1lverarch/slite",
-      desc: { en: "Rootless, proot-based container engine for running packages from many distributions without a daemon or sudo.",
-              ar: "محرك حاويات بدون root مبني على proot لتشغيل الحزم من توزيعات متعددة بدون daemon أو sudo.",
-              fr: "Moteur de conteneurs sans root basé sur proot, sans démon ni sudo.",
-              ru: "Контейнерный движок без root на базе proot: без демона и sudo." } }
+              fr: "Surcouche pacman à l'interface type paru pour installer, supprimer et chercher des paquets.",
+              ru: "Обёртка над pacman в стиле paru для установки, удаления и поиска." } },
+    { name: "SilverSaphire", lang: "Go + Nim", tag: "Installer", commits: 20, updated: "2026-10-17", url: "https://github.com/s1lverarch/SilverSaphire",
+      desc: { en: "The SilverArch installer, run as silverss. Guided terminal UI with themes and a full install flow.",
+              ar: "مثبّت SilverArch، يُشغَّل بالأمر silverss. واجهة طرفية موجّهة مع سمات وتدفق تثبيت كامل.",
+              fr: "L'installateur SilverArch, lancé avec silverss. TUI guidée avec thèmes et installation complète.",
+              ru: "Установщик SilverArch, запускается как silverss. Пошаговый TUI с темами и полной установкой." } },
+    { name: "silvernebula", lang: "Arch ISO", tag: "Build hub + repo", commits: 4, updated: "stable", url: "https://github.com/s1lverarch/silvernebula",
+      desc: { en: "Build hub: ISO profiles, installers and the signed pacman repository for x86_64.",
+              ar: "مركز البناء: ملفات ISO والمثبّتات ومستودع pacman الموقّع لـ x86_64.",
+              fr: "Centre de build : profils ISO, installateurs et dépôt pacman signé pour x86_64.",
+              ru: "Центр сборки: профили ISO, установщики и подписанный репозиторий pacman для x86_64." } },
+    { name: "slite", lang: "Rootless", tag: "Container engine", commits: null, updated: "v1.9.4", url: "https://github.com/s1lverarch/slite",
+      desc: { en: "Rootless, proot-based container engine. Runs packages from many distributions without a daemon or sudo.",
+              ar: "محرك حاويات بدون root مبني على proot. يشغّل حزم توزيعات كثيرة بدون daemon أو sudo.",
+              fr: "Moteur de conteneurs sans root basé sur proot. Sans démon ni sudo.",
+              ru: "Контейнерный движок без root на базе proot. Без демона и sudo." } }
   ],
 
-  /* Command reference: only commands that exist in the code. */
+  /* Apps: the tab shows these as icons. Clicking one opens its full page below. */
+  apps: [
+    { id: "silverpurge", icon: "disc", name: "silverpurge", repo: "silverpurge",
+      desc: { en: "System cleanup", ar: "تنظيف النظام", fr: "Nettoyage du système", ru: "Очистка системы" },
+      about: { en: "Scans and cleans orphan packages, the pacman cache, journal logs, trash and thumbnails. Nothing is deleted until you confirm.",
+               ar: "يفحص وينظّف الحزم اليتيمة وكاش pacman وسجلات journal والمهملات والصور المصغّرة. لا يُحذف شيء قبل تأكيدك.",
+               fr: "Analyse et nettoie les paquets orphelins, le cache pacman, les journaux, la corbeille et les miniatures. Rien n'est supprimé sans confirmation.",
+               ru: "Сканирует и очищает сиротские пакеты, кэш pacman, журналы, корзину и миниатюры. Ничего не удаляется без подтверждения." },
+      install: "sudo silverpurge scan", docId: "silverpurge",
+      features: { en: ["Dry-run scan by default", "Categories: orphans, cache, logs, trash, thumbnails", "Backup or delete for file categories", "Logs to /var/log/silverpurge.log"],
+                  ar: ["فحص بالمعاينة افتراضياً", "الفئات: orphans وcache وlogs وtrash وthumbnails", "نسخ احتياطي أو حذف للملفات", "السجل في /var/log/silverpurge.log"],
+                  fr: ["Analyse en simulation par défaut", "Catégories : orphans, cache, logs, trash, thumbnails", "Sauvegarde ou suppression pour les fichiers", "Journal dans /var/log/silverpurge.log"],
+                  ru: ["Сканирование в режиме предпросмотра", "Категории: orphans, cache, logs, trash, thumbnails", "Резервная копия или удаление для файлов", "Журнал в /var/log/silverpurge.log"] } },
+    { id: "silverflux", icon: "refresh", name: "silverflux", repo: "silverflux",
+      desc: { en: "Sync: mirrors, pacman, AUR", ar: "مزامنة: المرايا وpacman وAUR", fr: "Synchro : miroirs, pacman, AUR", ru: "Синхронизация: зеркала, pacman, AUR" },
+      about: { en: "One command that ranks mirrors, upgrades pacman and AUR packages, and removes old package versions.",
+               ar: "أمر واحد يرتّب المرايا ويحدّث حزم pacman وAUR ويزيل النسخ القديمة.",
+               fr: "Une commande pour classer les miroirs, mettre à jour pacman et l'AUR, et supprimer les anciennes versions.",
+               ru: "Одна команда для выбора зеркал, обновления pacman и AUR и удаления старых версий." },
+      install: "sudo silverflux", docId: "silverflux",
+      features: { en: ["Full sync with one command", "Mirror ranking with reflector or rate-mirrors", "AUR runs as your user, never as root", "Hooks: pre-sync.sh and post-sync.sh"],
+                  ar: ["مزامنة كاملة بأمر واحد", "ترتيب المرايا بـ reflector أو rate-mirrors", "AUR يعمل بمستخدمك وليس root", "Hooks: pre-sync.sh و post-sync.sh"],
+                  fr: ["Synchro complète en une commande", "Classement des miroirs avec reflector ou rate-mirrors", "AUR exécuté en tant qu'utilisateur, jamais root", "Hooks : pre-sync.sh et post-sync.sh"],
+                  ru: ["Полная синхронизация одной командой", "Выбор зеркал через reflector или rate-mirrors", "AUR запускается от вашего пользователя, не от root", "Хуки: pre-sync.sh и post-sync.sh"] } },
+    { id: "silvergrab", icon: "package", name: "silvergrab", repo: "silvergrab",
+      desc: { en: "Package manager", ar: "مدير الحزم", fr: "Gestionnaire de paquets", ru: "Менеджер пакетов" },
+      about: { en: "A pacman wrapper with a paru-style interface. It shows the list first and asks before it changes anything.",
+               ar: "غلاف لـ pacman بواجهة شبيهة بـ paru. يعرض القائمة أولاً ويسأل قبل أي تغيير.",
+               fr: "Surcouche pacman à l'interface type paru. Affiche la liste et demande confirmation avant toute modification.",
+               ru: "Обёртка над pacman в стиле paru. Сначала показывает список и спрашивает перед любыми изменениями." },
+      install: "sudo silvergrab -S firefox", docId: "silvergrab",
+      features: { en: ["Install, remove, search and upgrade", "Asks whether to keep config files on remove", "Needs root only for changing commands"],
+                  ar: ["تثبيت وحذف وبحث وتحديث", "يسأل عن الاحتفاظ بالإعدادات عند الحذف", "يحتاج root فقط للأوامر التي تغيّر النظام"],
+                  fr: ["Installer, supprimer, chercher et mettre à jour", "Demande de garder les fichiers de config lors de la suppression", "Root requis seulement pour les commandes qui modifient le système"],
+                  ru: ["Установка, удаление, поиск и обновление", "Спрашивает, сохранить ли конфиги при удалении", "Root нужен только для команд, меняющих систему"] } },
+    { id: "silverss", icon: "settings", name: "silverss", repo: "SilverSaphire",
+      desc: { en: "Installer", ar: "المثبّت", fr: "Installateur", ru: "Установщик" },
+      about: { en: "The SilverArch installer: a guided terminal interface with themes, language, disk, bootloader, kernel, desktop and review.",
+               ar: "مثبّت SilverArch: واجهة طرفية موجّهة مع سمات ولغة وقرص ومحمّل إقلاع ونواة وسطح مكتب ومراجعة.",
+               fr: "L'installateur SilverArch : interface guidée avec thèmes, langue, disque, chargeur, noyau, bureau et récapitulatif.",
+               ru: "Установщик SilverArch: пошаговый интерфейс с темами, языком, диском, загрузчиком, ядром, рабочим столом и проверкой." },
+      install: "sudo silverss", docId: "silverss",
+      features: { en: ["21 steps, any optional step can be skipped", "Custom timezone: type Region/City", "Renamed from ss to avoid a clash with iproute2"],
+                  ar: ["21 خطوة، ويمكن تخطي الاختيارية", "منطقة زمنية مخصصة: اكتب Region/City", "أُعيدت تسميته من ss لتفادي التعارض مع iproute2"],
+                  fr: ["21 étapes, les étapes optionnelles peuvent être ignorées", "Fuseau personnalisé : tapez Région/Ville", "Renommé depuis ss pour éviter un conflit avec iproute2"],
+                  ru: ["21 шаг, необязательные можно пропустить", "Свой часовой пояс: введите Регион/Город", "Переименован из ss, чтобы не конфликтовать с iproute2"] } },
+    { id: "slite", icon: "box", name: "slite", repo: "slite",
+      desc: { en: "Rootless containers", ar: "حاويات بدون root", fr: "Conteneurs sans root", ru: "Контейнеры без root" },
+      about: { en: "A rootless, proot-based container engine for running packages from many distributions.",
+               ar: "محرك حاويات بدون root مبني على proot لتشغيل حزم توزيعات كثيرة.",
+               fr: "Moteur de conteneurs sans root basé sur proot pour exécuter des paquets de nombreuses distributions.",
+               ru: "Контейнерный движок без root на базе proot для запуска пакетов многих дистрибутивов." },
+      install: "see the slite repository", docId: null,
+      features: { en: ["No daemon, no sudo", "50 target distributions listed on this site"],
+                  ar: ["بدون daemon ولا sudo", "50 توزيعة مستهدفة معروضة في هذا الموقع"],
+                  fr: ["Sans démon ni sudo", "50 distributions cibles listées sur ce site"],
+                  ru: ["Без демона и sudo", "50 целевых дистрибутивов, перечисленных на сайте"] } }
+  ],
+
+  /* Installer steps in order (silverss). */
+  steps: [
+    { en: "Theme", ar: "السمة", fr: "Thème", ru: "Тема" },
+    { en: "Language", ar: "اللغة", fr: "Langue", ru: "Язык" },
+    { en: "Keyboard", ar: "لوحة المفاتيح", fr: "Clavier", ru: "Клавиатура" },
+    { en: "Timezone", ar: "المنطقة الزمنية", fr: "Fuseau horaire", ru: "Часовой пояс" },
+    { en: "Disk", ar: "القرص", fr: "Disque", ru: "Диск" },
+    { en: "Filesystem", ar: "نظام الملفات", fr: "Système de fichiers", ru: "Файловая система" },
+    { en: "Bootloader", ar: "محمّل الإقلاع", fr: "Chargeur", ru: "Загрузчик" },
+    { en: "Kernel", ar: "النواة", fr: "Noyau", ru: "Ядро" },
+    { en: "Network", ar: "الشبكة", fr: "Réseau", ru: "Сеть" },
+    { en: "User", ar: "المستخدم", fr: "Utilisateur", ru: "Пользователь" },
+    { en: "Hostname", ar: "اسم الجهاز", fr: "Nom d'hôte", ru: "Имя хоста" },
+    { en: "Desktop", ar: "سطح المكتب", fr: "Bureau", ru: "Рабочий стол" },
+    { en: "Fonts", ar: "الخطوط", fr: "Polices", ru: "Шрифты" },
+    { en: "AUR", ar: "AUR", fr: "AUR", ru: "AUR" },
+    { en: "Security", ar: "الأمان", fr: "Sécurité", ru: "Безопасность" },
+    { en: "Swap", ar: "التبديل", fr: "Swap", ru: "Swap" },
+    { en: "GPU", ar: "كرت الرسوميات", fr: "GPU", ru: "GPU" },
+    { en: "Flatpak", ar: "Flatpak", fr: "Flatpak", ru: "Flatpak" },
+    { en: "SSH", ar: "SSH", fr: "SSH", ru: "SSH" },
+    { en: "Dotfiles", ar: "ملفات الإعداد", fr: "Dotfiles", ru: "Dotfiles" },
+    { en: "Review & Install", ar: "المراجعة والتثبيت", fr: "Vérification & installation", ru: "Проверка и установка" }
+  ],
+
+  /* Command reference. Commands stay as typed; notes and facts are translated. */
   docs: [
     { id: "silverpurge", title: "silverpurge", sub: "scan and clean",
       blocks: [
-        { cmd: "silverpurge", note: "dry-run scan of every category (the default; deletes nothing)" },
-        { cmd: "silverpurge scan trash thumbnails", note: "scan only selected categories" },
-        { cmd: "sudo silverpurge clean all", note: "clean every category, asking before each step" },
-        { cmd: "silverpurge --version", note: "print version" }
+        { cmd: "silverpurge", note: { en: "dry-run scan of every category (deletes nothing)", ar: "فحص بالمعاينة لكل الفئات (لا يحذف شيئاً)", fr: "analyse en simulation de toutes les catégories (ne supprime rien)", ru: "предпросмотр всех категорий (ничего не удаляет)" } },
+        { cmd: "silverpurge scan trash thumbnails", note: { en: "scan only selected categories", ar: "فحص فئات محددة فقط", fr: "analyse des catégories choisies seulement", ru: "сканирование только выбранных категорий" } },
+        { cmd: "sudo silverpurge clean all", note: { en: "clean every category, asking before each step", ar: "تنظيف كل الفئات مع السؤال قبل كل خطوة", fr: "nettoie toutes les catégories en demandant avant chaque étape", ru: "очистка всех категорий с подтверждением на каждом шаге" } },
+        { cmd: "silverpurge --version", note: { en: "print the version", ar: "عرض الإصدار", fr: "affiche la version", ru: "показать версию" } }
       ],
-      facts: [
-        "Categories: orphans, cache, logs, trash, thumbnails, all.",
-        "orphans, cache and logs need root; silverpurge re-runs itself with sudo when needed.",
-        "trash and thumbnails ask: backup (b) or delete permanently (d).",
-        "Backups go to ~/.local/share/silverpurge/backup/<timestamp>/.",
-        "Actions are logged to /var/log/silverpurge.log."
-      ] },
+      facts: { en: ["Categories: orphans, cache, logs, trash, thumbnails, all.", "orphans, cache and logs need root; silverpurge re-runs itself with sudo when needed.", "trash and thumbnails ask: backup (b) or delete permanently (d).", "Backups go to ~/.local/share/silverpurge/backup/<timestamp>/.", "Actions are logged to /var/log/silverpurge.log."],
+               ar: ["الفئات: orphans وcache وlogs وtrash وthumbnails وall.", "orphans وcache وlogs تحتاج root، ويعيد silverpurge تشغيل نفسه بـ sudo عند الحاجة.", "trash وthumbnails تسأل: نسخ احتياطي (b) أو حذف نهائي (d).", "النسخ الاحتياطية في ~/.local/share/silverpurge/backup/<timestamp>/.", "تُسجَّل الأفعال في /var/log/silverpurge.log."],
+               fr: ["Catégories : orphans, cache, logs, trash, thumbnails, all.", "orphans, cache et logs demandent root ; silverpurge se relance avec sudo si besoin.", "trash et thumbnails demandent : sauvegarde (b) ou suppression définitive (d).", "Les sauvegardes vont dans ~/.local/share/silverpurge/backup/<horodatage>/.", "Les actions sont journalisées dans /var/log/silverpurge.log."],
+               ru: ["Категории: orphans, cache, logs, trash, thumbnails, all.", "orphans, cache и logs требуют root; silverpurge перезапускается через sudo при необходимости.", "trash и thumbnails спрашивают: резервная копия (b) или окончательное удаление (d).", "Резервные копии в ~/.local/share/silverpurge/backup/<время>/.", "Действия записываются в /var/log/silverpurge.log."] } },
     { id: "silverflux", title: "silverflux", sub: "sync, mirrors, AUR",
       blocks: [
-        { cmd: "sudo silverflux", note: "full sync: mirrors, pacman -Syu, AUR, cleanup of old versions" },
-        { cmd: "sudo silverflux mirrors", note: "rank mirrors only" },
-        { cmd: "sudo silverflux aur", note: "update AUR packages only" },
-        { cmd: "silverflux status", note: "count pending updates" },
-        { cmd: "sudo silverflux -Syu", note: "alias of the full sync" }
+        { cmd: "sudo silverflux", note: { en: "full sync: mirrors, pacman -Syu, AUR, cleanup of old versions", ar: "مزامنة كاملة: المرايا وpacman -Syu وAUR وتنظيف النسخ القديمة", fr: "synchro complète : miroirs, pacman -Syu, AUR, nettoyage des anciennes versions", ru: "полная синхронизация: зеркала, pacman -Syu, AUR, очистка старых версий" } },
+        { cmd: "sudo silverflux mirrors", note: { en: "rank mirrors only", ar: "ترتيب المرايا فقط", fr: "classer les miroirs seulement", ru: "только выбор зеркал" } },
+        { cmd: "sudo silverflux aur", note: { en: "update AUR packages only", ar: "تحديث حزم AUR فقط", fr: "mettre à jour les paquets AUR seulement", ru: "только обновление пакетов AUR" } },
+        { cmd: "silverflux status", note: { en: "count pending updates", ar: "عدّ التحديثات المعلّقة", fr: "compter les mises à jour en attente", ru: "подсчёт ожидающих обновлений" } },
+        { cmd: "sudo silverflux -Syu", note: { en: "alias of the full sync", ar: "اسم بديل للمزامنة الكاملة", fr: "alias de la synchro complète", ru: "псевдоним полной синхронизации" } }
       ],
-      facts: [
-        "Config file: ~/.config/silverflux/config.lua (see config.example.lua).",
-        "Keys: aur_helper (auto|paru|yay|none), mirror_method (reflector|rate-mirrors|none), mirror_count, keep_versions, notify, hooks.",
-        "Hooks: ~/.config/silverflux/hooks/pre-sync.sh and post-sync.sh (must be executable).",
-        "AUR helpers never run as root; silverflux runs them as the invoking user (SUDO_USER).",
-        "If reflector fails, the previous mirrorlist is restored from its .bak copy."
-      ] },
+      facts: { en: ["Config: ~/.config/silverflux/config.lua (see config.example.lua).", "Keys: aur_helper, mirror_method, mirror_count, keep_versions, notify, hooks.", "Hooks: ~/.config/silverflux/hooks/pre-sync.sh and post-sync.sh (must be executable).", "AUR helpers never run as root; they run as the invoking user (SUDO_USER).", "If reflector fails, the previous mirrorlist is restored from its .bak copy."],
+               ar: ["الإعداد: ~/.config/silverflux/config.lua (انظر config.example.lua).", "المفاتيح: aur_helper وmirror_method وmirror_count وkeep_versions وnotify وhooks.", "Hooks: ~/.config/silverflux/hooks/pre-sync.sh و post-sync.sh (يجب أن تكون قابلة للتنفيذ).", "مساعدات AUR لا تعمل كـ root أبداً، بل بمستخدم من استدعى الأمر (SUDO_USER).", "إذا فشل reflector تُستعاد قائمة المرايا السابقة من نسختها .bak."],
+               fr: ["Configuration : ~/.config/silverflux/config.lua (voir config.example.lua).", "Clés : aur_helper, mirror_method, mirror_count, keep_versions, notify, hooks.", "Hooks : ~/.config/silverflux/hooks/pre-sync.sh et post-sync.sh (doivent être exécutables).", "Les assistants AUR ne tournent jamais en root ; ils tournent avec l'utilisateur appelant (SUDO_USER).", "Si reflector échoue, l'ancienne liste de miroirs est restaurée depuis sa copie .bak."],
+               ru: ["Конфиг: ~/.config/silverflux/config.lua (см. config.example.lua).", "Ключи: aur_helper, mirror_method, mirror_count, keep_versions, notify, hooks.", "Хуки: ~/.config/silverflux/hooks/pre-sync.sh и post-sync.sh (должны быть исполняемыми).", "Помощники AUR никогда не работают от root; они запускаются от вызвавшего пользователя (SUDO_USER).", "Если reflector падает, предыдущий mirrorlist восстанавливается из копии .bak."] } },
     { id: "silvergrab", title: "silvergrab", sub: "pacman wrapper",
       blocks: [
-        { cmd: "sudo silvergrab -S firefox", note: "install (asks to continue)" },
-        { cmd: "sudo silvergrab -R vim", note: "remove (asks whether to keep config files)" },
-        { cmd: "silvergrab -Ss neovim", note: "search repositories" },
-        { cmd: "sudo silvergrab -Syu", note: "sync and upgrade the system" },
-        { cmd: "silvergrab --help", note: "usage" }
+        { cmd: "sudo silvergrab -S firefox", note: { en: "install (asks to continue)", ar: "تثبيت (يسأل قبل المتابعة)", fr: "installer (demande de continuer)", ru: "установка (спрашивает продолжить)" } },
+        { cmd: "sudo silvergrab -R vim", note: { en: "remove (asks whether to keep config files)", ar: "حذف (يسأل عن الاحتفاظ بملفات الإعداد)", fr: "supprimer (demande de garder la config)", ru: "удаление (спрашивает, сохранить конфиги)" } },
+        { cmd: "silvergrab -Ss neovim", note: { en: "search repositories", ar: "البحث في المستودعات", fr: "rechercher dans les dépôts", ru: "поиск в репозиториях" } },
+        { cmd: "sudo silvergrab -Syu", note: { en: "sync and upgrade the system", ar: "مزامنة وتحديث النظام", fr: "synchroniser et mettre à jour le système", ru: "синхронизация и обновление системы" } },
+        { cmd: "silvergrab --help", note: { en: "usage", ar: "طريقة الاستعمال", fr: "aide", ru: "справка" } }
       ],
-      facts: [
-        "-S, -R and -Syu require root and exit with a message if run without it.",
-        "Each action shows the list first and waits for confirmation."
-      ] },
+      facts: { en: ["-S, -R and -Syu need root and stop with a message without it.", "Each action shows the list first and waits for confirmation."],
+               ar: ["-S وR- وSyu- تحتاج root وتتوقف برسالة إن لم تُستعمل بصلاحياته.", "كل فعل يعرض القائمة أولاً وينتظر التأكيد."],
+               fr: ["-S, -R et -Syu demandent root et s'arrêtent avec un message sans lui.", "Chaque action affiche la liste d'abord et attend confirmation."],
+               ru: ["-S, -R и -Syu требуют root и без него выводят сообщение и завершаются.", "Каждое действие сначала показывает список и ждёт подтверждения."] } },
     { id: "silverss", title: "silverss", sub: "SilverArch installer",
       blocks: [
-        { cmd: "sudo silverss", note: "start the installer (renamed from ss to avoid a clash with iproute2's ss)" }
+        { cmd: "sudo silverss", note: { en: "start the installer (renamed from ss to avoid a clash with iproute2)", ar: "تشغيل المثبّت (أُعيد تسميته من ss لتفادي التعارض مع iproute2)", fr: "lancer l'installateur (renommé depuis ss pour éviter un conflit avec iproute2)", ru: "запуск установщика (переименован из ss из-за конфликта с iproute2)" } }
       ],
-      facts: [
-        "Steps in order: Theme, Language, Keyboard, Timezone, Disk, Filesystem, Bootloader, Kernel, Network, User, Hostname, Desktop, Fonts, AUR, Security, Swap, GPU, Flatpak, SSH, Dotfiles, Review & Install.",
-        "Timezone: pick from the list, or choose Custom and type Region/City (for example Africa/Algiers).",
-        "Keys: ↑ ↓ move, enter select, b back, s or tab skip a skippable step, esc cancel text input, q quit.",
-        "Optional steps (Fonts, Security, Flatpak, SSH, Dotfiles) can be skipped."
-      ] },
+      facts: { en: ["Keys: ↑ ↓ move, enter select, b back, s or tab skip optional steps, esc cancel input, q quit.", "Timezone: pick from the list, or choose Custom and type Region/City (for example Africa/Algiers)."],
+               ar: ["المفاتيح: ↑ ↓ للتنقل، enter للاختيار، b للرجوع، s أو tab لتخطي الخطوات الاختيارية، esc لإلغاء الإدخال، q للخروج.", "المنطقة الزمنية: اختر من القائمة، أو Custom واكتب Region/City (مثلاً Africa/Algiers)."],
+               fr: ["Touches : ↑ ↓ pour naviguer, enter pour choisir, b retour, s ou tab pour passer les étapes optionnelles, esc annuler, q quitter.", "Fuseau : choisissez dans la liste, ou Custom et tapez Région/Ville (ex. Africa/Algiers)."],
+               ru: ["Клавиши: ↑ ↓ навигация, enter выбор, b назад, s или tab пропуск необязательных шагов, esc отмена ввода, q выход.", "Часовой пояс: выберите из списка или Custom и введите Регион/Город (например Africa/Algiers)."] } },
     { id: "repo", title: "silvernebula repo", sub: "add to pacman (signed)",
       blocks: [
-        { cmd: "curl -fLO https://s1lverarch.github.io/linuxdistro/keys/silvernebula.gpg\ngpg --show-keys --with-fingerprint silvernebula.gpg", note: "step 1: download the public key and check the fingerprint (8EA07B2205012BA364DBB14BCC892E251DCD1C44)" },
-        { cmd: "sudo pacman-key --add silvernebula.gpg\nsudo pacman-key --lsign-key 8EA07B2205012BA364DBB14BCC892E251DCD1C44", note: "step 2: import the key into pacman and mark it trusted" },
-        { cmd: "[silvernebula]\nSigLevel = Required DatabaseOptional\nServer   = https://raw.githubusercontent.com/s1lverarch/silvernebula/main/$arch", note: "step 3: add the repository with signature checks on" },
-        { cmd: "sudo pacman -Syu\nsudo pacman -S silvernebula-keyring", note: "step 4: sync, then install the keyring package" }
+        { cmd: "curl -fLO https://s1lverarch.github.io/linuxdistro/keys/silvernebula.gpg\ngpg --show-keys --with-fingerprint silvernebula.gpg", note: { en: "step 1: download the public key and check the fingerprint", ar: "الخطوة 1: حمّل المفتاح العمومي وتحقّق من البصمة", fr: "étape 1 : téléchargez la clé publique et vérifiez l'empreinte", ru: "шаг 1: скачайте открытый ключ и проверьте отпечаток" } },
+        { cmd: "sudo pacman-key --add silvernebula.gpg\nsudo pacman-key --lsign-key 8EA07B2205012BA364DBB14BCC892E251DCD1C44", note: { en: "step 2: import the key into pacman and mark it trusted", ar: "الخطوة 2: استورد المفتاح في pacman وعلّمه موثوقاً", fr: "étape 2 : importez la clé dans pacman et marquez-la de confiance", ru: "шаг 2: импортируйте ключ в pacman и отметьте доверенным" } },
+        { cmd: "[silvernebula]\nSigLevel = Required DatabaseOptional\nServer   = https://raw.githubusercontent.com/s1lverarch/silvernebula/main/$arch", note: { en: "step 3: add the repository with signatures required", ar: "الخطوة 3: أضف المستودع مع اشتراط التوقيع", fr: "étape 3 : ajoutez le dépôt avec signatures obligatoires", ru: "шаг 3: добавьте репозиторий с обязательной подписью" } },
+        { cmd: "sudo pacman -Syu\nsudo pacman -S silvernebula-keyring", note: { en: "step 4: sync, then install the keyring package", ar: "الخطوة 4: مزامنة ثم تثبيت حزمة المفاتيح", fr: "étape 4 : synchroniser, puis installer le paquet de clés", ru: "шаг 4: синхронизация и установка пакета ключей" } }
       ],
-      facts: [
-        "Never disable signature checks (SigLevel = Optional TrustAll) on a real system.",
-        "Packages in x86_64/: silvernebula-keyring, silversaphire, slite, silvergrab, silverflux, silverpurge.",
-        "The database is silvernebula.db, a real file (not a symlink) so GitHub serves it correctly.",
-        "Packagers: build-repo.sh builds, signs and indexes every package (set SN_KEY to the master fingerprint)."
-      ] }
+      facts: { en: ["Never disable signature checks (SigLevel = Optional TrustAll) on a real system.", "Packages in x86_64/: silvernebula-keyring, silversaphire, slite, silvergrab, silverflux, silverpurge.", "The database is silvernebula.db, a real file (not a symlink)."],
+               ar: ["لا تعطّل التحقق من التوقيع أبداً (SigLevel = Optional TrustAll) على نظام حقيقي.", "الحزم في x86_64/: silvernebula-keyring وsilversaphire وslite وsilvergrab وsilverflux وsilverpurge.", "قاعدة البيانات silvernebula.db ملف حقيقي وليس رابطاً رمزياً."],
+               fr: ["Ne désactivez jamais la vérification des signatures (SigLevel = Optional TrustAll).", "Paquets dans x86_64/ : silvernebula-keyring, silversaphire, slite, silvergrab, silverflux, silverpurge.", "La base est silvernebula.db, un vrai fichier (pas un lien symbolique)."],
+               ru: ["Никогда не отключайте проверку подписей (SigLevel = Optional TrustAll) в реальной системе.", "Пакеты в x86_64/: silvernebula-keyring, silversaphire, slite, silvergrab, silverflux, silverpurge.", "База — silvernebula.db, настоящий файл (не симлинк)."] } }
   ],
 
-  iso: {
-    version: "v2026.06.22", arch: "x86_64", size: "1.1 GB", boot: "UEFI & Legacy",
+  iso: { version: "v2026.06.22", arch: "x86_64", size: "1.1 GB", boot: "UEFI & Legacy",
     sha256: "e03e748a145c65a43b21eaddf07be2e9520dc2ad89cbfa6243f203b756526bb7",
-    url: "https://github.com/s1lverarch/silvernebula/releases"
-  },
+    url: "https://github.com/s1lverarch/silvernebula/releases" },
 
-  /* Distros the Slite engine targets (as listed by the project). */
   distros: ["Arch","NixOS","Gentoo","Void","Solus","Slackware","Alpine","Mageia","Clear","TinyCore","LFS","Debian","Ubuntu","Kali","PopOS","Lubuntu","Fedora","CentOS","AlmaLinux","Rocky","Rawhide","Guix","FreeBSD","OpenBSD","Devuan","AntiX","Mint","Zorin","Elementary","Deepin","Nitrux","PureOS","Tails","BlueOS","Linpus","Pardus","ReactOS","Haiku","ROS","VoidGL","Puppy","System","Artix","Endeavour","Garuda","CachyOS","Termux","ArchARM","VoidMobile"],
 
-  /* Phoronix headlines shown when the live feed cannot be reached (copied from the saved page). */
+  /* Phoronix headlines (snapshot). Titles are translated where the snapshot is shown; live RSS stays in English. */
   news: {
-    snapshot: "Snapshot of the Phoronix feed",
+    snapshot: { en: "Snapshot of the Phoronix feed", ar: "لقطة من خلاصة Phoronix", fr: "Instantané du flux Phoronix", ru: "Снимок ленты Phoronix" },
     items: [
-      { title: "AMD's ROCm HRX Loom v0.1 Released For Targeting AMD CPUs, GPUs & NPUs",
-        link: "https://www.phoronix.com/news/AMD-ROCm-HRX-Loom-0.1", category: "AMD", time: "80 minutes ago",
-        excerpt: "Loom SDK v0.1 was released as part of the latest ROCm advancements announced at AMD Advancing AI." },
-      { title: "FAT32 File-System Seeing As Much As 265x Improvement With Linux 7.4",
-        link: "https://www.phoronix.com/news/Linux-7.4-Faster-FAT32", category: "Linux Storage", time: "96 minutes ago",
-        excerpt: "A change merged for Linux 7.4 is showing large speed-ups for the FAT32 file-system." },
-      { title: "Graphics/NPU Driver Changes Already Begin Queuing Up For What Will Be Linux 7.5",
-        link: "https://www.phoronix.com/news/Linux-7.5-drm-misc-next", category: "Linux Kernel", time: "113 minutes ago",
-        excerpt: "drm-misc-next pull requests have been sent to DRM-Next to stage new feature code for Linux 7.5." },
-      { title: "KSMBD Adds New Options With Linux 7.4",
-        link: "https://www.phoronix.com/news/Linux-7.4-KSMBD", category: "Linux Storage", time: "2 hours ago",
-        excerpt: "Several improvements to KSMBD, the in-kernel SMB3 file server, were merged for Linux 7.4." }
+      { title: "AMD's ROCm HRX Loom v0.1 Released For Targeting AMD CPUs, GPUs & NPUs", link: "https://www.phoronix.com/news/AMD-ROCm-HRX-Loom-0.1", category: "AMD", time: { en: "80 minutes ago", ar: "قبل 80 دقيقة", fr: "il y a 80 min", ru: "80 минут назад" },
+        tt: { ar: "إصدار Loom v0.1 من ROCm HRX يستهدف معالجات وكروت ووحدات NPU من AMD", fr: "Sortie de Loom v0.1 de ROCm HRX pour CPU, GPU et NPU AMD", ru: "Выпущен ROCm HRX Loom v0.1 для CPU, GPU и NPU AMD" } },
+      { title: "FAT32 File-System Seeing As Much As 265x Improvement With Linux 7.4", link: "https://www.phoronix.com/news/Linux-7.4-Faster-FAT32", category: "Linux Storage", time: { en: "96 minutes ago", ar: "قبل 96 دقيقة", fr: "il y a 96 min", ru: "96 минут назад" },
+        tt: { ar: "تحسن يصل إلى 265 ضعفاً في نظام ملفات FAT32 مع Linux 7.4", fr: "Jusqu'à 265x plus rapide pour FAT32 avec Linux 7.4", ru: "До 265x ускорение FAT32 в Linux 7.4" } },
+      { title: "Graphics/NPU Driver Changes Already Begin Queuing Up For What Will Be Linux 7.5", link: "https://www.phoronix.com/news/Linux-7.5-drm-misc-next", category: "Linux Kernel", time: { en: "113 minutes ago", ar: "قبل 113 دقيقة", fr: "il y a 113 min", ru: "113 минут назад" },
+        tt: { ar: "تغييرات برامج تشغيل الرسوميات و NPU تتراكم لنواة Linux 7.5", fr: "Les pilotes graphiques/NPU se préparent pour Linux 7.5", ru: "Изменения драйверов GPU/NPU уже готовятся для Linux 7.5" } },
+      { title: "KSMBD Adds New Options With Linux 7.4", link: "https://www.phoronix.com/news/Linux-7.4-KSMBD", category: "Linux Storage", time: { en: "2 hours ago", ar: "قبل ساعتين", fr: "il y a 2 h", ru: "2 часа назад" },
+        tt: { ar: "خيارات جديدة لخادم KSMBD SMB3 في Linux 7.4", fr: "Nouvelles options pour KSMBD dans Linux 7.4", ru: "Новые опции KSMBD в Linux 7.4" } }
     ]
   },
 
-  links: {
-    discord: "https://discord.gg/eBgVHSPru9",
-    github: "https://github.com/s1lverarch",
-    wiki: "https://silverarchlinux.miraheze.org/wiki/",
-    email: "s1lv3rcore@proton.me",
-    site: "https://s1lverarch.github.io/linuxdistro/",
-    unrwa: "https://www.unrwa.org",
-    phoronix: "https://www.phoronix.com/rss.php"
-  }
+  links: { discord: "https://discord.gg/eBgVHSPru9", github: "https://github.com/s1lverarch", wiki: "https://silverarchlinux.miraheze.org/wiki/", email: "s1lv3rcore@proton.me", site: "https://s1lverarch.github.io/linuxdistro/", unrwa: "https://www.unrwa.org", phoronix: "https://www.phoronix.com/rss.php" }
 };
