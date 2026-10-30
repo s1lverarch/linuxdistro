@@ -8,12 +8,11 @@
   --mono: 'JetBrains Mono', ui-monospace, monospace;
   --ease: cubic-bezier(.16, 1, .3, 1);
   --r: 18px;
-}
+  }
 html[data-theme="dark"] {
   color-scheme: dark;
   --bg: #000000;
-  --wall: url('assets/wall-dark.jpg');
-  --zoom: 75%;
+  --wall: url('assets/dark.gif');
   --wall-tint: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.82) 60%, #000 100%);
   --accent: #F865FF; --accent2: #c26bff;
   --text: #ece4f5; --strong: #ffffff; --dim: #9d8fae; --dim2: #5b4f6b;
@@ -25,7 +24,7 @@ html[data-theme="dark"] {
 html[data-theme="light"] {
   color-scheme: light;
   --bg: #f4f0fb;
-  --wall: url('assets/wall-light.jpg');
+  --wall: url('assets/light.gif');
   --wall-tint: linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.72) 60%, #f4f0fb 100%);
   --accent: #8839ef; --accent2: #6a1bd1;
   --text: #2a2338; --strong: #140f22; --dim: #5d5570; --dim2: #9a93ab;
@@ -523,4 +522,29 @@ select.lab-input option { background: #111; color: #eee; }
   .nav .search kbd { display: none; }
   .nav-right .lang, .nav-right #theme-btn { display: none; }
   .brand span { display: none; }
+}
+/* page zoom 125% on PC browsers only (mouse), not phones */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  html {
+    zoom: 1.25;
+  }
+}
+/* every card block in the site: one card under another (the gallery keeps its grid) */
+.repo-layout, .repo-grid, .origin, .iso, .setup, .community, .foot,
+.lab-grid, .th-stage, .th-body, .tab-grid, .facts-grid, .stats, .distros,
+.app-icons, .steps, .keys, .cmdline, .pkg-list, .cl-list, .docs, .app-links, .hero-cta {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  grid-template-columns: none !important;
+  gap: 16px;
+}
+.repo-layout > *, .repo-grid > *, .origin > *, .iso > *, .setup > *,
+.community > *, .foot > *, .lab-grid > *, .th-stage > *, .th-body > *, .tab-grid > *,
+.facts-grid > *, .stats > *, .distros > *, .app-icons > *, .steps > *, .pkg-list > *,
+.cl-list > *, .docs > *, .app-links > *, .hero-cta > * {
+  width: 100%;
+}
+.hero-cta .btn, .app-links .btn { width: auto; }
+.stats > * { width: auto; }
 }
