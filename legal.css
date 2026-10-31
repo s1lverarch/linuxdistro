@@ -1,0 +1,159 @@
+/* ════════════════════════════════════════════════════════════
+   legal.css — privacy, terms and license pages
+   Loaded after style.css. Self-contained for the legal layout.
+   ════════════════════════════════════════════════════════════ */
+
+/* ── top bar ── */
+.legal-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 28px;
+  background: rgba(255,255,255,.6);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border-bottom: 1px solid rgba(60,30,90,.12);
+}
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: #140f22;
+  transition: color .2s;
+}
+.legal-back img { width: 26px; height: 26px; }
+.legal-back:hover { color: var(--bt-a, #8839ef); }
+
+.legal-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-inline-start: auto;
+}
+.legal-nav .lang { position: relative; display: inline-flex; }
+.legal-nav .globe-btn,
+.legal-nav #btn-theme-btn {
+  width: 40px;
+  height: 40px;
+  color: var(--bt-a, #8839ef);
+  border-color: color-mix(in srgb, var(--bt-a, #8839ef) 40%, transparent);
+}
+.legal-nav .globe-btn .ic,
+.legal-nav #btn-theme-btn .ic { width: 18px; height: 18px; }
+
+/* language menu opens downward, aligned to the globe, inside the screen */
+.legal-nav .lang-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  left: auto;
+  min-width: 200px;
+  z-index: 300;
+}
+
+/* ── page container ── */
+.legal {
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 120px 20px 90px;
+  text-align: start;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* ── heading block ── */
+.legal-head {
+  display: block;
+  width: 100%;
+  padding: 36px 40px 26px;
+  margin: 0;
+  border-radius: 28px 28px 0 0;
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(60,30,90,.12);
+  border-bottom: 0;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+.legal h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: .04em;
+  color: #140f22;
+  margin: 0 0 12px;
+}
+.legal-meta {
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #5d5570;
+}
+
+/* ── sections ── */
+.legal .sec {
+  display: block;
+  width: 100%;
+  margin: 0 !important;
+  padding: 26px 40px 24px !important;
+  background: rgba(255,255,255,.55);
+  border-left: 1px solid rgba(60,30,90,.12);
+  border-right: 1px solid rgba(60,30,90,.12);
+  border-top: 1px solid rgba(60,30,90,.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+.legal .sec:last-of-type {
+  border-bottom: 1px solid rgba(60,30,90,.12);
+  border-radius: 0 0 28px 28px;
+}
+.legal .sec h2 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #140f22;
+  margin: 0 0 12px;
+}
+.legal .sec p,
+.legal .sec li {
+  font-size: .9rem;
+  line-height: 1.9;
+  color: #2a2338;
+  margin: 0 0 12px;
+}
+.legal .sec p:last-child { margin-bottom: 0; }
+.legal .sec .sec-note { color: #5d5570; font-size: .82rem; }
+.legal .sec ul { padding-inline-start: 22px; margin: 4px 0 12px; }
+
+/* ── links follow the button colour ── */
+.legal a {
+  color: var(--bt-a, #8839ef);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.legal a:hover { color: var(--bt-b, #6a1bd1); }
+
+/* ── Arabic: IBM Plex Sans Arabic ── */
+html[dir="rtl"] .legal,
+html[dir="rtl"] .legal h1,
+html[dir="rtl"] .legal h2,
+html[dir="rtl"] .legal p,
+html[dir="rtl"] .legal li,
+html[dir="rtl"] .legal-back {
+  font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+}
+
+/* ── small screens ── */
+@media (max-width: 640px) {
+  .legal { padding: 100px 12px 60px; }
+  .legal-head,
+  .legal .sec { padding-inline: 22px !important; }
+  .legal-nav { padding: 10px 14px; }
+  .legal-back span { display: none; }
+}
