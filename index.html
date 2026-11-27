@@ -3,40 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Science+Gothic&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="style.css">
-</head>
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/linuxdistro/favicon.ico">
+<!-- Add in <head> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
 
-<!-- SEO -->
-<meta name="title" content="SilverArch Linux — Tunisian Indie Arch-Based Distro">
-<meta name="description" content="The first Tunisian indie Arch-based Linux distribution. SilverNebula repo, SilverSaphire installer, Slite container engine.">
-<meta name="keywords" content="SilverArch Linux, Arch Linux, Tunisian Linux, indie Linux distro, SilverNebula, SilverSaphire, Slite, Silvercore">
+<!-- Basic -->
+<title>SilverArch Linux Distribution</title>
+<meta name="description" content="SilverArch Linux: the first Tunisian indie open source Linux distribution, built on Arch. SilverNebula repository, SilverSaphire installer and Slite container engine.">
+<meta name="keywords" content="SilverArch Linux, Linux, Arch Linux, open source OS, open source operating system, Linux distribution, Arch-based distro, Tunisian Linux, indie Linux distro, SilverNebula, SilverSaphire, Slite, Silvercore">
 <meta name="author" content="Silvercore">
 <meta name="robots" content="index, follow">
 <meta name="revisit-after" content="7 days">
+<meta name="disclaimer" content="SilverArch Linux is not affiliated with or sponsored by Arch Linux.">
 <link rel="canonical" href="https://s1lverarch.github.io/linuxdistro/">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 
-<!-- GEO -->
+<!-- Languages -->
+<meta http-equiv="content-language" content="en, ar, fr, ru">
+<meta name="description" lang="ar" content="SilverArch Linux: أول توزيعة لينكس تونسية مستقلة مفتوحة المصدر مبنية على Arch.">
+<meta name="description" lang="fr" content="SilverArch Linux : la première distribution Linux tunisienne indépendante, open source, basée sur Arch.">
+<meta name="description" lang="ru" content="SilverArch Linux: первый тунисский независимый дистрибутив Linux с открытым исходным кодом на основе Arch.">
+<link rel="alternate" hreflang="en" href="https://s1lverarch.github.io/linuxdistro/?lang=en">
+<link rel="alternate" hreflang="ar" href="https://s1lverarch.github.io/linuxdistro/?lang=ar">
+<link rel="alternate" hreflang="fr" href="https://s1lverarch.github.io/linuxdistro/?lang=fr">
+<link rel="alternate" hreflang="ru" href="https://s1lverarch.github.io/linuxdistro/?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://s1lverarch.github.io/linuxdistro/">
+
+<!-- Geo -->
 <meta name="geo.region" content="TN">
 <meta name="geo.country" content="Tunisia">
 <meta name="geo.placename" content="Tunisia">
-<meta name="language" content="en, ar, fr, ru">
-
-<!-- International -->
-<meta http-equiv="content-language" content="en, ar, fr, ru">
-<link rel="alternate" hreflang="en" href="https://s1lverarch.github.io/linuxdistro/">
-<link rel="alternate" hreflang="ar" href="https://s1lverarch.github.io/linuxdistro/">
-<link rel="alternate" hreflang="fr" href="https://s1lverarch.github.io/linuxdistro/">
-<link rel="alternate" hreflang="ru" href="https://s1lverarch.github.io/linuxdistro/">
-<link rel="alternate" hreflang="x-default" href="https://s1lverarch.github.io/linuxdistro/">
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="SilverArch Project">
-<meta property="og:title" content="SilverArch Linux — Tunisian Indie Arch-Based Distro">
-<meta property="og:description" content="The first Tunisian indie Arch-based Linux distribution. SilverNebula repo, SilverSaphire installer, Slite container engine.">
+<meta property="og:title" content="SilverArch Linux Distribution">
+<meta property="og:description" content="The first Tunisian indie open source Linux distribution, built on Arch.">
 <meta property="og:url" content="https://s1lverarch.github.io/linuxdistro/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
@@ -51,15 +51,19 @@
   "@type": "SoftwareApplication",
   "name": "SilverArch Linux",
   "url": "https://s1lverarch.github.io/linuxdistro/",
+  "description": "The first Tunisian indie open source Linux distribution, built on Arch.",
   "operatingSystem": "Linux",
   "applicationCategory": "OperatingSystem",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html",
   "inLanguage": ["en", "ar", "fr", "ru"],
-  "author": {
-    "@type": "Person",
-    "name": "Silvercore"
-  }
+  "author": {"@type": "Person", "name": "Silvercore"}
 }
 </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Science+Gothic&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
 
 <nav class="nav" id="nav" aria-label="Main">
@@ -80,15 +84,23 @@
         <kbd>/</kbd>
         <div id="search-results" class="glass search-results" role="listbox"></div>
       </div>
-      <div class="lang">
-        <button class="globe-btn" aria-label="Language" aria-haspopup="true"><i data-icon="globe"></i></button>
-        <div class="lang-menu" role="menu">
-          <button class="lang-opt" data-lang-opt="en" role="menuitem"><span>🇬🇧 : English</span><small>EN</small></button>
-          <button class="lang-opt" data-lang-opt="ar" role="menuitem"><span>🇸🇦 : العربي</span><small>AR</small></button>
-          <button class="lang-opt" data-lang-opt="fr" role="menuitem"><span>🇫🇷 : Français</span><small>FR</small></button>
-          <button class="lang-opt" data-lang-opt="ru" role="menuitem"><span>🇷🇺 : Русский</span><small>RU</small></button>
-        </div>
-      </div>
+    <div class="lang">
+  <button class="globe-btn" aria-label="Language" aria-haspopup="true"><i data-icon="globe"></i></button>
+  <div class="lang-menu" role="menu">
+    <button class="lang-opt" data-lang-opt="en" role="menuitem">
+      <span class="fi fi-gb"></span> <span>English</span><small>EN</small>
+    </button>
+    <button class="lang-opt" data-lang-opt="ar" role="menuitem">
+      <span class="fi fi-sa"></span> <span>العربي</span><small>AR</small>
+    </button>
+    <button class="lang-opt" data-lang-opt="fr" role="menuitem">
+      <span class="fi fi-fr"></span> <span>Français</span><small>FR</small>
+    </button>
+    <button class="lang-opt" data-lang-opt="ru" role="menuitem">
+      <span class="fi fi-ru"></span> <span>Русский</span><small>RU</small>
+    </button>
+  </div>
+</div>
       <button class="icon-btn" id="theme-btn" aria-label="Toggle theme"></button>
       <button class="icon-btn burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-sheet"><i data-icon="menu"></i></button>
     </div>
