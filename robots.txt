@@ -1,7 +1,6 @@
 # SilverArch Linux — robots.txt
 # https://s1lverarch.github.io/linuxdistro/
 
-# Search engines: allowed everywhere on the site
 User-agent: Googlebot
 Allow: /
 
@@ -17,24 +16,21 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# Default rule for all other crawlers
 User-agent: *
 Allow: /
 Disallow: /keys/private/
-Disallow: /*.priv.asc$
 
-# AI training crawlers: opt out
 User-agent: GPTBot
-Allow: /
+Disallow: /
 
 User-agent: ChatGPT-User
 Disallow: /
 
 User-agent: ClaudeBot
-Allow: /
+Disallow: /
 
 User-agent: anthropic-ai
-Allow: /
+Disallow: /
 
 User-agent: Google-Extended
 Disallow: /
