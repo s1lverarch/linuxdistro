@@ -1,4 +1,54 @@
+# SilverArch Linux — robots.txt
+# https://s1lverarch.github.io/linuxdistro/
+
+# Search engines: allowed everywhere on the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Default rule for all other crawlers
 User-agent: *
 Allow: /
+Disallow: /keys/private/
+Disallow: /*.priv.asc$
+
+# AI training crawlers: opt out
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
 
 Sitemap: https://s1lverarch.github.io/linuxdistro/sitemap.xml
